@@ -154,7 +154,7 @@ def rounded_str(num, precision=6):
     return str(round(num, precision))
 
 
-perf_metrics = ['key', 'depth', 'width',  'tp', 'fp', 'tn', 'fn', 'tpr', 'tnr',
+perf_metrics = ['key', 'depth', 'width', 'tp', 'fp', 'tn', 'fn', 'tpr', 'tnr',
                 'roc_auc', 'geometric_mean', 'arithmetic_mean', 'f1_score', 'precision']
 
 

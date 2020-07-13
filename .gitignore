@@ -1,5 +1,7 @@
 **/*.ipynb_checkpoints
+**/*__pycache__
 **/*.npy
 **/*.npz
 **/*.gz
 johns-work
+.vscode

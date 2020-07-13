@@ -1,0 +1,5 @@
+**/*.ipynb_checkpoints
+**/*.npy
+**/*.npz
+**/*.gz
+johns-work

@@ -9,9 +9,11 @@
 #SBATCH --mail-user=jjohn273@fau.edu
 #SBATCH --mail-type=ALL
 
-source /home/jjohn273/git/ECBDL14-Classification/env/bin/activate
+echo $CMS_ROOT/env
 
-srun python main.py \
+source $CMS_ROOT/env/bin/activate
+
+srun python3 main.py \
   runs=1 \
   embedding_type=onehot \
   x_train_filename=x-train-onehot-hcpcs.npz \

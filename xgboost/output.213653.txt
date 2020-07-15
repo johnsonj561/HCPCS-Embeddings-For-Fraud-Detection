@@ -1,0 +1,16 @@
+/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/env
+Running job with arguments
+{'runs': '1', 'embedding_type': 'onehot', 'x_train_filename': 'x-train-onehot-hcpcs.npz', 'x_test_filename': 'x-test-onehot-hcpcs.npz', 'sample_size': '100', 'debug': 'true'}
+Using param grid
+{'max_depth': [4]}
+Starting run 0
+Loaded data with shape (100, 13)
+Created train-test split with train shape (80, 153) and test shape (20, 153)
+Training class imbalance description:
+Negative Samples: 80
+Positive Samples: 0
+Postive Class Ratio: 0.0
+Training model with config
+{'max_depth': 4}
+Training completed in 0.30709242820739746
+Writing performance metrics

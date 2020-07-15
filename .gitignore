@@ -3,5 +3,6 @@
 **/*.npy
 **/*.npz
 **/*.gz
+env
 johns-work
 .vscode

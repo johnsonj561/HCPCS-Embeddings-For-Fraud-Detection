@@ -189,7 +189,7 @@ def write_perf_metrics(path, y_true, y_prob, time, max_depth, embedding_type, th
 
     out = ",".join(cols) if not os.path.isfile(path) else ''
 
-    predictions = np.where(y_prob > 0.5, 1.0, 0.0)
+    predictions = np.where(y_prob > threshold, 1.0, 0.0)
     tn, fp, fn, tp = confusion_matrix(y_true, predictions).ravel()
     tpr = (tp) / (tp + fn)
     tnr = (tn) / (tn + fp)

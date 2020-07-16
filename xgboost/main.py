@@ -77,7 +77,7 @@ for run in range(runs):
         print('Computing the best threshold using test data')
         delta = 0.05
         optimal_threshold = round(get_best_threshold(
-            train_y_prob, train_y, model, delta), 4)
+            train_x, train_y, model, delta), 4)
 
         print(
             f'Writing performance metrics using threshold {optimal_threshold}')

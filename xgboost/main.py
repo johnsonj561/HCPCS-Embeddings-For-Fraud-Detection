@@ -16,7 +16,9 @@ cli_args = args_to_dict(sys.argv)
 debug = cli_args.get('debug') == 'true'
 runs = int(cli_args.get('runs', 1))
 embedding_type = cli_args.get('embedding_type')
-sample_size = int(cli_args.get('sample_size', 500000))
+sample_size = cli_args.get('sample_size')
+if sample_size != None:
+    sample_size = int(sample_size)
 n_jobs = int(cli_args.get('n_jobs', 4))
 print(f'Running job with arguments\n{cli_args}')
 
@@ -76,7 +78,7 @@ for run in range(runs):
         print(f'Training completed in {elapsed}')
 
         print('Computing the best threshold using test data')
-        delta = 0.01
+        delta = 0.001
         optimal_threshold = round(get_best_threshold(
             train_x, train_y, model, delta), 4)
 

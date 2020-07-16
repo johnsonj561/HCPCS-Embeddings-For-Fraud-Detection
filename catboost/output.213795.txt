@@ -1,0 +1,13 @@
+Running job with arguments
+{'runs': '1', 'embedding_type': 'categorical', 'sample_size': '500000', 'n_jobs': '8', 'debug': 'true'}
+Using param grid
+{'max_depth': [4]}
+Starting run 0
+Loaded data with shape (500000, 13)
+Created train-test split with train shape (400000, 9) and test shape (100000, 9)
+Training class imbalance description:
+Negative Samples: 399662
+Positive Samples: 338
+Postive Class Ratio: 0.0845
+Training model with config
+{'max_depth': 4}

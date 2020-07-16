@@ -1,0 +1,31 @@
+Traceback (most recent call last):
+  File "_catboost.pyx", line 2461, in _catboost.get_float_feature
+  File "_catboost.pyx", line 1592, in _catboost._FloatOrNan
+  File "_catboost.pyx", line 1439, in _catboost._FloatOrNanFromString
+TypeError: Cannot convert 'b'Ophthalmology'' to float
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "main.py", line 74, in <module>
+    model.fit(train_x, train_y)
+  File "/mnt/beegfs/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/env/lib/python3.7/site-packages/catboost/core.py", line 4115, in fit
+    silent, early_stopping_rounds, save_snapshot, snapshot_file, snapshot_interval, init_model)
+  File "/mnt/beegfs/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/env/lib/python3.7/site-packages/catboost/core.py", line 1731, in _fit
+    save_snapshot, snapshot_file, snapshot_interval, init_model
+  File "/mnt/beegfs/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/env/lib/python3.7/site-packages/catboost/core.py", line 1619, in _prepare_train_params
+    group_weight, subgroup_id, pairs_weight, baseline, column_description)
+  File "/mnt/beegfs/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/env/lib/python3.7/site-packages/catboost/core.py", line 957, in _build_train_pool
+    group_weight=group_weight, subgroup_id=subgroup_id, pairs_weight=pairs_weight, baseline=baseline)
+  File "/mnt/beegfs/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/env/lib/python3.7/site-packages/catboost/core.py", line 434, in __init__
+    self._init(data, label, cat_features, text_features, pairs, weight, group_id, group_weight, subgroup_id, pairs_weight, baseline, feature_names, thread_count)
+  File "/mnt/beegfs/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/env/lib/python3.7/site-packages/catboost/core.py", line 938, in _init
+    self._init_pool(data, label, cat_features, text_features, pairs, weight, group_id, group_weight, subgroup_id, pairs_weight, baseline, feature_names, thread_count)
+  File "_catboost.pyx", line 3759, in _catboost._PoolBase._init_pool
+  File "_catboost.pyx", line 3800, in _catboost._PoolBase._init_pool
+  File "_catboost.pyx", line 3649, in _catboost._PoolBase._init_features_order_layout_pool
+  File "_catboost.pyx", line 2814, in _catboost._set_features_order_data_pd_data_frame
+  File "_catboost.pyx", line 2502, in _catboost.create_num_factor_data
+  File "_catboost.pyx", line 2463, in _catboost.get_float_feature
+_catboost.CatBoostError: Bad value for num_feature[non_default_doc_idx=0,feature_idx=0]="Ophthalmology": Cannot convert 'b'Ophthalmology'' to float
+srun: error: node095: task 0: Exited with exit code 1

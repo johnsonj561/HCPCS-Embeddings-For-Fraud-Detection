@@ -28,7 +28,7 @@ test_perf_filename = 'test-results.csv'
 
 n_estimators = 100
 param_grid = {
-    'max_depth': [2, 4, 8],
+    'max_depth': [4, 8],
 }
 
 # if debug, reduce workload
@@ -78,7 +78,7 @@ for run in range(runs):
         print(f'Training completed in {elapsed}')
 
         print('Computing the best threshold using test data')
-        delta = 0.001
+        delta = 0.0001
         optimal_threshold = round(get_best_threshold(
             train_x, train_y, model, delta), 4)
 

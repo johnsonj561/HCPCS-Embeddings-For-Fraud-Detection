@@ -68,7 +68,6 @@ for run in range(runs):
         # train model
         timer.reset()
         model = CatBoostClassifier(
-            n_jobs=n_jobs,
             n_estimators=100,
             max_depth=max_depth,
         )

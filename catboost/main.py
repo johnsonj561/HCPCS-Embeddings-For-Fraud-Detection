@@ -16,7 +16,7 @@ cli_args = args_to_dict(sys.argv)
 debug = cli_args.get('debug') == 'true'
 runs = int(cli_args.get('runs', 1))
 embedding_type = cli_args.get('embedding_type')
-sample_size = int(cli_args.get('sample_size', 500000))
+sample_size = int(cli_args.get('sample_size'))
 n_jobs = int(cli_args.get('n_jobs', 4))
 print(f'Running job with arguments\n{cli_args}')
 

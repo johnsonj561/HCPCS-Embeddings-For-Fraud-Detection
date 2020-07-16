@@ -42,7 +42,6 @@ def get_train_test(df, with_hcpcs=True, with_categorical=False):
     df = df.drop(columns=['index', 'npi', 'year', 'exclusion'])
     train_ind, test_ind = train_test_split(
         np.arange(0, df.shape[0], 1), test_size=0.2, random_state=42)
-
     if with_categorical:
         train_x = df.iloc[train_ind]
         test_x = df.iloc[test_ind]

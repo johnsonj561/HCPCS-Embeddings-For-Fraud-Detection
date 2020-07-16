@@ -12,7 +12,7 @@ source $CMS_ROOT/env/bin/activate
 
 srun python3 main.py \
   runs=1 \
-  embedding_type=onehot \
+  embedding_type=categorical \
   x_train_filename=x-train-onehot-hcpcs.npz \
   x_test_filename=x-test-onehot-hcpcs.npz \
   sample_size=500000 \

@@ -1,5 +1,5 @@
 from sklearn.model_selection import ParameterGrid
-from xgboost import XGBClassifier
+from catboost import CatBoostClassifier
 import pandas as pd
 import sys
 import os
@@ -67,16 +67,17 @@ for run in range(runs):
 
         # train model
         timer.reset()
-        model = XGBClassifier(
+        model = CatBoostClassifier(
             n_jobs=n_jobs,
-            n_estimators=n_estimators,
-            max_depth=max_depth)
+            n_estimators=100,
+            max_depth=max_depth,
+        )
         model.fit(train_x, train_y)
         elapsed = timer.lap()
         print(f'Training completed in {elapsed}')
 
         print('Computing the best threshold using test data')
-        delta = 0.01
+        delta = 0.05
         optimal_threshold = round(get_best_threshold(
             train_x, train_y, model, delta), 4)
 

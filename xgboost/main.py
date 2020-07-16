@@ -6,7 +6,8 @@ import os
 
 proj_dir = os.environ['CMS_ROOT']
 sys.path.append(proj_dir)
-from utils.utils import args_to_dict, write_perf_metrics, Timer, get_imbalance_description
+from utils.utils import args_to_dict, write_perf_metrics, Timer
+from utils.utils import get_best_threshold, get_imbalance_description
 from utils.data import load_data, get_train_test
 
 # parse arguments
@@ -73,16 +74,22 @@ for run in range(runs):
         elapsed = timer.lap()
         print(f'Training completed in {elapsed}')
 
-        print('Writing performance metrics')
+        print('Computing the best threshold using test data')
+        delta = 0.05
+        optimal_threshold = round(get_best_threshold(
+            train_y_prob, train_y, model, delta), 4)
+
+        print(
+            f'Writing performance metrics using threshold {optimal_threshold}')
         train_y_prob = model.predict_proba(train_x)[:, 1]
         test_y_prob = model.predict_proba(test_x)[:, 1]
+
         write_perf_metrics(train_perf_filename, train_y,
-                           train_y_prob, elapsed, max_depth, embedding_type)
+                           train_y_prob, elapsed, max_depth, embedding_type, optimal_threshold)
         write_perf_metrics(test_perf_filename, test_y,
-                           test_y_prob, elapsed, max_depth, embedding_type)
+                           test_y_prob, elapsed, max_depth, embedding_type, optimal_threshold)
 
     # free up memory
     del train_x, train_y, test_x, test_y
 
-timer.write_to_file('timings.csv')
 print('Job complete')

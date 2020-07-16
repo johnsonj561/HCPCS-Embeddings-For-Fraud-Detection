@@ -14,13 +14,14 @@ import warnings
 proj_dir = os.environ['CMS_ROOT']
 raw_data_path = os.environ['CMS_PARTB_PATH']
 
-def load_data(sample_size):
+def load_data(sample_size=None):
     columns = ['npi', 'provider_type', 'nppes_provider_state', 'nppes_provider_gender', 'hcpcs_code',
         'line_srvc_cnt', 'bene_unique_cnt', 'bene_day_srvc_cnt', 'average_submitted_chrg_amt',
         'average_medicare_payment_amt',
         'year', 'exclusion']
     df = pd.read_csv(raw_data_path, sep=chr(1), usecols=columns)
-    df = df.sample(n=sample_size)
+    if sample_size != None:
+        df = df.sample(n=sample_size)
     df.reset_index(inplace=True)
     return df
 

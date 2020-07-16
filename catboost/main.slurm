@@ -13,7 +13,7 @@ source $CMS_ROOT/env/bin/activate
 
 srun python3 main.py \
   runs=1 \
-  embedding_type=onehot \
+  embedding_type=categorical \
   sample_size=500000 \
   n_jobs=8 \
   debug=true

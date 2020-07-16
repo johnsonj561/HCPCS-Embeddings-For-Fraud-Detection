@@ -1,0 +1,17 @@
+Running job with arguments
+{'runs': '1', 'embedding_type': 'onehot', 'x_train_filename': 'x-train-onehot-hcpcs.npz', 'x_test_filename': 'x-test-onehot-hcpcs.npz', 'sample_size': '5000000', 'n_jobs': '8', 'debug': 'true'}
+Using param grid
+{'max_depth': [4]}
+Starting run 0
+Loaded data with shape (5000000, 13)
+Created train-test split with train shape (4000000, 5897) and test shape (1000000, 5897)
+Training class imbalance description:
+Negative Samples: 3996620
+Positive Samples: 3380
+Postive Class Ratio: 0.0845
+Training model with config
+{'max_depth': 4}
+Training completed in 29.252109050750732
+Computing the best threshold using test data
+Writing performance metrics using threshold 0.0
+Job complete

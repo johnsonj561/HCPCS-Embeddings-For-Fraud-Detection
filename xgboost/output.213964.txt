@@ -1,0 +1,100 @@
+Running job with arguments
+{'runs': '5', 'embedding_type': 'nohcpcs', 'n_jobs': '8'}
+Using param grid
+{'max_depth': [4, 8]}
+Starting run 0
+Loaded data with shape (37255443, 13)
+Created train-test split with train shape (29804354, 159) and test shape (7451089, 159)
+Training class imbalance description:
+Negative Samples: 29779278
+Positive Samples: 25076
+Postive Class Ratio: 0.08413535820974345
+Training model with config
+{'max_depth': 4}
+[19:27:14] WARNING: /workspace/src/gbm/gbtree.cc:139: Tree method is automatically selected to be 'approx' for faster speed. To use old behavior (exact greedy algorithm on single machine), set tree_method to 'exact'.
+Training completed in 4233.949100494385
+Computing the best threshold using test data
+Writing performance metrics using threshold 0.0008
+Training model with config
+{'max_depth': 8}
+[20:59:35] WARNING: /workspace/src/gbm/gbtree.cc:139: Tree method is automatically selected to be 'approx' for faster speed. To use old behavior (exact greedy algorithm on single machine), set tree_method to 'exact'.
+Training completed in 7750.03560757637
+Computing the best threshold using test data
+Writing performance metrics using threshold 0.0011
+Starting run 1
+Loaded data with shape (37255443, 13)
+Created train-test split with train shape (29804354, 159) and test shape (7451089, 159)
+Training class imbalance description:
+Negative Samples: 29779278
+Positive Samples: 25076
+Postive Class Ratio: 0.08413535820974345
+Training model with config
+{'max_depth': 4}
+[23:41:18] WARNING: /workspace/src/gbm/gbtree.cc:139: Tree method is automatically selected to be 'approx' for faster speed. To use old behavior (exact greedy algorithm on single machine), set tree_method to 'exact'.
+Training completed in 4001.5101799964905
+Computing the best threshold using test data
+Writing performance metrics using threshold 0.0008
+Training model with config
+{'max_depth': 8}
+[01:09:35] WARNING: /workspace/src/gbm/gbtree.cc:139: Tree method is automatically selected to be 'approx' for faster speed. To use old behavior (exact greedy algorithm on single machine), set tree_method to 'exact'.
+Training completed in 7729.059520483017
+Computing the best threshold using test data
+Writing performance metrics using threshold 0.0011
+Starting run 2
+Loaded data with shape (37255443, 13)
+Created train-test split with train shape (29804354, 159) and test shape (7451089, 159)
+Training class imbalance description:
+Negative Samples: 29779278
+Positive Samples: 25076
+Postive Class Ratio: 0.08413535820974345
+Training model with config
+{'max_depth': 4}
+[03:50:35] WARNING: /workspace/src/gbm/gbtree.cc:139: Tree method is automatically selected to be 'approx' for faster speed. To use old behavior (exact greedy algorithm on single machine), set tree_method to 'exact'.
+Training completed in 3905.17129278183
+Computing the best threshold using test data
+Writing performance metrics using threshold 0.0008
+Training model with config
+{'max_depth': 8}
+[05:17:32] WARNING: /workspace/src/gbm/gbtree.cc:139: Tree method is automatically selected to be 'approx' for faster speed. To use old behavior (exact greedy algorithm on single machine), set tree_method to 'exact'.
+Training completed in 7739.334639072418
+Computing the best threshold using test data
+Writing performance metrics using threshold 0.0011
+Starting run 3
+Loaded data with shape (37255443, 13)
+Created train-test split with train shape (29804354, 159) and test shape (7451089, 159)
+Training class imbalance description:
+Negative Samples: 29779278
+Positive Samples: 25076
+Postive Class Ratio: 0.08413535820974345
+Training model with config
+{'max_depth': 4}
+[07:59:09] WARNING: /workspace/src/gbm/gbtree.cc:139: Tree method is automatically selected to be 'approx' for faster speed. To use old behavior (exact greedy algorithm on single machine), set tree_method to 'exact'.
+Training completed in 3904.5780284404755
+Computing the best threshold using test data
+Writing performance metrics using threshold 0.0008
+Training model with config
+{'max_depth': 8}
+[09:25:52] WARNING: /workspace/src/gbm/gbtree.cc:139: Tree method is automatically selected to be 'approx' for faster speed. To use old behavior (exact greedy algorithm on single machine), set tree_method to 'exact'.
+Training completed in 7735.134254693985
+Computing the best threshold using test data
+Writing performance metrics using threshold 0.0011
+Starting run 4
+Loaded data with shape (37255443, 13)
+Created train-test split with train shape (29804354, 159) and test shape (7451089, 159)
+Training class imbalance description:
+Negative Samples: 29779278
+Positive Samples: 25076
+Postive Class Ratio: 0.08413535820974345
+Training model with config
+{'max_depth': 4}
+[12:06:58] WARNING: /workspace/src/gbm/gbtree.cc:139: Tree method is automatically selected to be 'approx' for faster speed. To use old behavior (exact greedy algorithm on single machine), set tree_method to 'exact'.
+Training completed in 3901.0878739356995
+Computing the best threshold using test data
+Writing performance metrics using threshold 0.0008
+Training model with config
+{'max_depth': 8}
+[13:33:40] WARNING: /workspace/src/gbm/gbtree.cc:139: Tree method is automatically selected to be 'approx' for faster speed. To use old behavior (exact greedy algorithm on single machine), set tree_method to 'exact'.
+Training completed in 7733.752538919449
+Computing the best threshold using test data
+Writing performance metrics using threshold 0.0011
+Job complete

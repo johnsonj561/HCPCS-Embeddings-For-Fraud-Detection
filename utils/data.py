@@ -37,9 +37,21 @@ def df_to_csr(df):
     return df.tocsr()
 
 
+def get_sparse_onehot_data(df, embedding_type, with_hcpcs, with_state):
+    y = df['exclusion']
+    drop_columns = ['index', 'npi', 'year', 'exclusion']
+    if not with_hcpcs:
+        drop_columns.append('hcpcs_code')
+    if not with_state:
+        drop_columns.append('state')
+    df = df.drop(columns=drop_columns)
+    df = pd.get_dummies(df, sparse=True)
+    df = df_to_csr(df)
+    return df, y
+
+
 def get_train_test(df, with_hcpcs=True, with_categorical=False):
     y = df['exclusion']
-    df = df.drop(columns=['index', 'npi', 'year', 'exclusion'])
     train_ind, test_ind = train_test_split(
         np.arange(0, df.shape[0], 1), test_size=0.2, random_state=42)
     if with_categorical:

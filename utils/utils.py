@@ -181,11 +181,11 @@ def write_dnn_perf_metrics(y_true, y_prob, threshold, key, depth, width, path):
         outfile.write(out)
 
 
-def write_perf_metrics(path, y_true, y_prob, time, max_depth, embedding_type, threshold):
-    cols = [
-        'embedding_type', 'max_depth', 'time', 'roc_auc',
-        'tp', 'fp', 'tn', 'fn', 'tpr', 'tnr', 'geometric_mean',
-        'arithmetic_mean', 'f1_score', 'precision', 'threshold']
+def write_perf_metrics(path, y_true, y_prob, threshold, extras):
+    extra_cols = list(extras.keys())
+    extra_vals = list(extras.values())
+    cols = ['roc_auc', 'tp', 'fp', 'tn', 'fn', 'tpr', 'tnr', 'geometric_mean',
+            'arithmetic_mean', 'f1_score', 'precision', *extra_cols]
 
     out = ",".join(cols) if not os.path.isfile(path) else ''
 
@@ -199,9 +199,8 @@ def write_perf_metrics(path, y_true, y_prob, time, max_depth, embedding_type, th
     f1 = f1_score(y_true, predictions)
     precision = precision_score(y_true, predictions)
 
-    results = [embedding_type, max_depth, time, roc_auc,
-               tp, fp, tn, fn, tpr, tnr, geometric_mean,
-               arithmetic_mean, f1, precision, threshold]
+    results = [roc_auc, tp, fp, tn, fn, tpr, tnr,
+               geometric_mean, arithmetic_mean, f1, precision, *extra_vals]
     results = [rounded_str(x) for x in results]
     out += '\n' + ','.join(results)
 

@@ -37,15 +37,12 @@ def df_to_csr(df):
     return df.tocsr()
 
 
-def get_sparse_onehot_data(df, embedding_type, with_hcpcs, with_state):
+def get_sparse_onehot_data(df, embedding_type, drop_columns):
     y = df['exclusion']
-    drop_columns = ['index', 'npi', 'year', 'exclusion']
-    if not with_hcpcs:
-        drop_columns.append('hcpcs_code')
-    if not with_state:
-        drop_columns.append('state')
+    drop_columns = ['index', 'npi', 'year', 'exclusion', *drop_columns]
     df = df.drop(columns=drop_columns)
-    df = pd.get_dummies(df, sparse=True)
+    if embedding_type == 'onehot':
+        df = pd.get_dummies(df, sparse=True)
     df = df_to_csr(df)
     return df, y
 

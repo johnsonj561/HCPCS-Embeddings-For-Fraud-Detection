@@ -28,7 +28,7 @@ test_perf_filename = 'test-results.csv'
 
 n_estimators = 100
 param_grid = {
-    'max_depth': [4, 8],
+    'max_depth': [8],
 }
 
 # if debug, reduce workload

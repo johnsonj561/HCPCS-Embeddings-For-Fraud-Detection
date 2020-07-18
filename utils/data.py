@@ -21,6 +21,7 @@ def load_data(sample_size=None):
                'average_medicare_payment_amt',
                'year', 'exclusion']
     df = pd.read_csv(raw_data_path, sep=chr(1), usecols=columns)
+    df['nppes_provider_gender'].fillna('M', inplace=True)
     if sample_size != None:
         df = df.sample(n=sample_size)
     df.reset_index(inplace=True)

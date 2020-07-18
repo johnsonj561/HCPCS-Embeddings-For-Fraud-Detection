@@ -43,7 +43,7 @@ def get_sparse_onehot_data(df, embedding_type, drop_columns):
     df = df.drop(columns=drop_columns)
     if embedding_type == 'onehot':
         df = pd.get_dummies(df, sparse=True)
-    df = df_to_csr(df)
+        df = df_to_csr(df)
     return df, y
 
 

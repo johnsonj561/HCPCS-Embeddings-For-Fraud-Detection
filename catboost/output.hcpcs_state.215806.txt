@@ -1,0 +1,12 @@
+Running job with arguments
+{'runs': '1', 'n_jobs': '8', 'sample_size': '500000', 'debug': 'true', 'embedding_type': 'catboost', 'categorical_columns': 'provider_type,nppes_provider_state,nppes_provider_gender,hcpcs_code'}
+n_estimators: 5
+max_depth: 8
+Starting run 0
+Loaded data with shape (500000, 13)
+Encoded data shape: (500000, 9)
+Starting fold 0
+Train shape: (399999, 9)
+Test shape: (100001, 9)
+Minority size: 0.09025022562556406
+Threshold: 0.0009025022562556406

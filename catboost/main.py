@@ -17,10 +17,9 @@ debug = cli_args.get('debug') == 'true'
 runs = int(cli_args.get('runs', 1))
 embedding_type = cli_args.get('embedding_type')
 drop_columns = cli_args.get('drop_columns', '')
-drop_columns = drop_columns.split(',')
+drop_columns = drop_columns.split(',') if len(drop_columns) > 0 else []
 categorical_columns = cli_args.get('categorical_columns', '')
-categorical_columns = categorical_columns.split(
-    ',') if len(categorical_columns) > 0 else []
+categorical_columns = categorical_columns.split(',') if len(categorical_columns) > 0 else []
 sample_size = cli_args.get('sample_size')
 if sample_size != None:
     sample_size = int(sample_size)
@@ -35,6 +34,8 @@ n_estimators = 5 if debug else 100
 max_depth = 8
 print(f'n_estimators: {n_estimators}')
 print(f'max_depth: {max_depth}')
+
+timer = Timer()
 
 # iterate over runs
 for run in range(runs):
@@ -52,7 +53,7 @@ for run in range(runs):
     skf = StratifiedKFold(n_splits=5, shuffle=True)
     for fold, (train_index, test_index) in enumerate(skf.split(x, y)):
         print(f'Starting fold {fold}')
-        train_x, test_x = x[train_index], x[test_index]
+        train_x, test_x = x.iloc[train_index], x.iloc[test_index]
         train_y, test_y = y[train_index], y[test_index]
         minority_size = (train_y == 1).sum() / len(train_y) * 100
         threshold = minority_size / 100

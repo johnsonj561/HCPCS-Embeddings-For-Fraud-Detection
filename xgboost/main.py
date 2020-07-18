@@ -17,7 +17,7 @@ debug = cli_args.get('debug') == 'true'
 runs = int(cli_args.get('runs', 1))
 embedding_type = cli_args.get('embedding_type')
 drop_columns = cli_args.get('drop_columns', '')
-drop_columns = drop_columns.split(',')
+drop_columns = drop_columns.split(',') if len(drop_columns) > 0 else []
 sample_size = cli_args.get('sample_size')
 if sample_size != None:
     sample_size = int(sample_size)

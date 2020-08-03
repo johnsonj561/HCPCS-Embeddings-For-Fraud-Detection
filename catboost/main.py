@@ -8,7 +8,7 @@ proj_dir = os.environ['CMS_ROOT']
 sys.path.append(proj_dir)
 from utils.utils import args_to_dict, write_perf_metrics, Timer
 from utils.utils import get_best_threshold, get_imbalance_description
-from utils.data import load_data, get_sparse_onehot_data
+from utils.data import load_data, get_embedded_data
 
 # parse arguments
 filename = sys.argv[0].replace('.py', '')
@@ -19,7 +19,8 @@ embedding_type = cli_args.get('embedding_type')
 drop_columns = cli_args.get('drop_columns', '')
 drop_columns = drop_columns.split(',') if len(drop_columns) > 0 else []
 categorical_columns = cli_args.get('categorical_columns', '')
-categorical_columns = categorical_columns.split(',') if len(categorical_columns) > 0 else []
+categorical_columns = categorical_columns.split(
+    ',') if len(categorical_columns) > 0 else []
 sample_size = cli_args.get('sample_size')
 if sample_size != None:
     sample_size = int(sample_size)
@@ -46,7 +47,7 @@ for run in range(runs):
     print(f'Loaded data with shape {data.shape}')
 
     # drop columns and onehot encode data
-    x, y = get_sparse_onehot_data(data, embedding_type, drop_columns)
+    x, y = get_embedded_data(data, embedding_type, drop_columns)
     print(f'Encoded data shape: {x.shape}')
 
     # apply 5 fold stratified cross validation

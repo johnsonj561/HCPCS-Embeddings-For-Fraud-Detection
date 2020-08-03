@@ -30,7 +30,7 @@ print(f'Running job with arguments\n{cli_args}')
 train_perf_filename = 'train-results.csv'
 test_perf_filename = 'test-results.csv'
 
-n_estimators = 5 if debug else 100
+n_estimators = 5 if debug else 250
 max_depth = 8
 print(f'n_estimators: {n_estimators}')
 print(f'max_depth: {max_depth}')
@@ -64,7 +64,6 @@ for run in range(runs):
 
         timer.reset()
         model = CatBoostClassifier(
-            n_jobs=n_jobs,
             n_estimators=n_estimators,
             max_depth=max_depth,
             cat_features=categorical_columns
@@ -85,7 +84,7 @@ for run in range(runs):
             'elapsed': elapsed,
             'minority_size': minority_size,
             'embedding_type': embedding_type,
-            'dropped_columns': ','.join(drop_columns),
+            'dropped_columns': '|'.join(drop_columns),
             'max_depth': max_depth,
             'threshold': threshold,
         }

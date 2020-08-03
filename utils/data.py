@@ -10,6 +10,7 @@ import sys
 import pandas as pd
 import h5py
 import warnings
+from gensim.models import KeyedVectors
 
 proj_dir = os.environ['CMS_ROOT']
 raw_data_path = os.environ['CMS_PARTB_PATH']
@@ -38,13 +39,36 @@ def df_to_csr(df):
     return df.tocsr()
 
 
-def get_sparse_onehot_data(df, embedding_type, drop_columns):
+def safe_embedding(embeddings, key):
+    try:
+        return embeddings[key]
+    except KeyError:
+        return np.zeros(shape=(embeddings.vector_size))
+
+
+def get_embedded_data(df, embedding_type, embedding_path, drop_columns):
     y = df['exclusion']
     drop_columns = ['index', 'npi', 'year', 'exclusion', *drop_columns]
     df = df.drop(columns=drop_columns)
     if embedding_type == 'onehot':
         df = pd.get_dummies(df, sparse=True)
         df = df_to_csr(df)
+    if embedding_type == 'skipgram' or embedding_type == 'cbow':
+        embeddings = KeyedVectors.load(embedding_path)
+        hcpcs = df['hcpcs_code'].values
+        df.drop(columns=['hcpcs_code'], inplace=True)
+        df = pd.concat(
+            [
+                df,
+                pd.DataFrame([safe_embedding(embeddings, x) for x in hcpcs],
+                             columns=[f'hcpcs_{i}' for i in range(
+                                 embeddings.vector_size)],
+                             index=df.index),
+            ],
+            axis=1
+        )
+        df = pd.get_dummies(df).values
+
     return df, y
 
 

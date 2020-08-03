@@ -15,3 +15,4 @@ srun python3 main.py \
   runs=5 \
   n_jobs=8 \
   embedding_type=onehot \
+  embedding_path=data/embeddings-e150-w5-i100-t080120194624.kv

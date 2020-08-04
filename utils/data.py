@@ -63,11 +63,12 @@ def get_embedded_data(df, embedding_type, embedding_path, drop_columns):
                 pd.DataFrame([safe_embedding(embeddings, x) for x in hcpcs],
                              columns=[f'hcpcs_{i}' for i in range(
                                  embeddings.vector_size)],
-                             index=df.index),
+                             index=df.index, dtype='float32'),
             ],
             axis=1
         )
         df = pd.get_dummies(df).values
+        df = df_to_csr(df)
 
     return df, y
 

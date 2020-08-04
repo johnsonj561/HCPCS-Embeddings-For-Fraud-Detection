@@ -24,7 +24,7 @@ def load_data(sample_size=None):
     df = pd.read_csv(raw_data_path, sep=chr(1), usecols=columns)
     df['nppes_provider_gender'].fillna('M', inplace=True)
     if sample_size != None:
-        df = df.sample(n=sample_size)
+        df = df.sample(frac=sample_size)
     df.reset_index(inplace=True)
     return df
 
@@ -63,11 +63,12 @@ def get_embedded_data(df, embedding_type, embedding_path, drop_columns):
                 pd.DataFrame([safe_embedding(embeddings, x) for x in hcpcs],
                              columns=[f'hcpcs_{i}' for i in range(
                                  embeddings.vector_size)],
-                             index=df.index),
+                             index=df.index, dtype='float32'),
             ],
             axis=1
         )
         df = pd.get_dummies(df).values
+        df = df_to_csr(df)
 
     return df, y
 

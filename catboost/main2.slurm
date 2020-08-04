@@ -1,15 +1,15 @@
 #!/bin/bash
 
-#SBATCH -J catboost_hcpcs_state
+#SBATCH -J catboost_hcpcs
 #SBATCH -A jjohn273
-#SBATCH -e errors.hcpcs_state_.%j.txt
-#SBATCH -o output.hcpcs_state.%j.txt
+#SBATCH -e errors.%j.txt
+#SBATCH -o output.%j.txt
 #SBATCH -p longq-bigdata7
+#SBATCH -w node089
+#SBATCH --exclusive
 #SBATCH --mem=80gb
 #SBATCH --mail-user=jjohn273@fau.edu
 #SBATCH --mail-type=ALL
-#SBATCH -w node088
-#SBATCH --exclusive
 
 source $CMS_ROOT/env/bin/activate
 
@@ -17,4 +17,5 @@ srun python3 main.py \
   runs=5 \
   n_jobs=8 \
   embedding_type=catboost \
-  categorical_columns=provider_type,nppes_provider_state,nppes_provider_gender,hcpcs_code
+  drop_columns=nppes_provider_state \
+  categorical_columns=provider_type,nppes_provider_gender,hcpcs_code

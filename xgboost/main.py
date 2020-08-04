@@ -80,7 +80,7 @@ for run in range(runs):
             'elapsed': elapsed,
             'minority_size': minority_size,
             'embedding_type': embedding_type,
-            'dropped_columns': ','.join(drop_columns),
+            'dropped_columns': '|'.join(drop_columns),
             'max_depth': max_depth,
             'threshold': threshold,
         }

@@ -24,7 +24,7 @@ def load_data(sample_size=None):
     df = pd.read_csv(raw_data_path, sep=chr(1), usecols=columns)
     df['nppes_provider_gender'].fillna('M', inplace=True)
     if sample_size != None:
-        df = df.sample(n=sample_size)
+        df = df.sample(frac=sample_size)
     df.reset_index(inplace=True)
     return df
 

@@ -21,7 +21,7 @@ drop_columns = cli_args.get('drop_columns', '')
 drop_columns = drop_columns.split(',') if len(drop_columns) > 0 else []
 sample_size = cli_args.get('sample_size')
 if sample_size != None:
-    sample_size = int(sample_size)
+    sample_size = float(sample_size)
 n_jobs = int(cli_args.get('n_jobs', 4))
 print(f'Running job with arguments\n{cli_args}')
 
@@ -72,11 +72,6 @@ for run in range(runs):
         model.fit(train_x, train_y)
         elapsed = timer.lap()
         print(f'Training completed in {elapsed}')
-
-        # print('Computing the best threshold using test data')
-        # delta = 0.0001
-        # threshold = round(get_best_threshold(
-        #     train_x, train_y, model, delta), 4)
 
         train_y_prob = model.predict_proba(train_x)[:, 1]
         test_y_prob = model.predict_proba(test_x)[:, 1]

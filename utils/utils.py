@@ -184,8 +184,8 @@ def write_dnn_perf_metrics(y_true, y_prob, threshold, key, depth, width, path):
 def write_perf_metrics(path, y_true, y_prob, threshold, extras):
     extra_cols = list(extras.keys())
     extra_vals = list(extras.values())
-    cols = ['roc_auc', 'tp', 'fp', 'tn', 'fn', 'tpr', 'tnr', 'geometric_mean',
-            'arithmetic_mean', 'f1_score', 'precision', *extra_cols]
+    cols = ['roc_auc', 'tp', 'fp', 'tn', 'fn',
+            'tpr', 'tnr', 'geometric_mean', *extra_cols]
 
     out = ",".join(cols) if not os.path.isfile(path) else ''
 
@@ -195,12 +195,8 @@ def write_perf_metrics(path, y_true, y_prob, threshold, extras):
     tnr = (tn) / (tn + fp)
     roc_auc = roc_auc_score(y_true, y_prob)
     geometric_mean = math.sqrt(tpr * tnr)
-    arithmetic_mean = 0.5 * (tpr + tnr)
-    f1 = f1_score(y_true, predictions)
-    precision = precision_score(y_true, predictions)
 
-    results = [roc_auc, tp, fp, tn, fn, tpr, tnr,
-               geometric_mean, arithmetic_mean, f1, precision, *extra_vals]
+    results = [roc_auc, tp, fp, tn, fn, tpr, tnr, geometric_mean * extra_vals]
     results = [rounded_str(x) for x in results]
     out += '\n' + ','.join(results)
 

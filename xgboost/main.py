@@ -21,7 +21,7 @@ drop_columns = cli_args.get('drop_columns', '')
 drop_columns = drop_columns.split(',') if len(drop_columns) > 0 else []
 sample_size = cli_args.get('sample_size')
 if sample_size != None:
-    sample_size = float(sample_size)
+    sample_size = int(sample_size)
 n_jobs = int(cli_args.get('n_jobs', 4))
 print(f'Running job with arguments\n{cli_args}')
 

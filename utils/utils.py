@@ -196,7 +196,7 @@ def write_perf_metrics(path, y_true, y_prob, threshold, extras):
     roc_auc = roc_auc_score(y_true, y_prob)
     geometric_mean = math.sqrt(tpr * tnr)
 
-    results = [roc_auc, tp, fp, tn, fn, tpr, tnr, geometric_mean * extra_vals]
+    results = [roc_auc, tp, fp, tn, fn, tpr, tnr, geometric_mean, *extra_vals]
     results = [rounded_str(x) for x in results]
     out += '\n' + ','.join(results)
 

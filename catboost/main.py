@@ -23,7 +23,7 @@ categorical_columns = categorical_columns.split(
     ',') if len(categorical_columns) > 0 else []
 sample_size = cli_args.get('sample_size')
 if sample_size != None:
-    sample_size = int(sample_size)
+    sample_size = float(sample_size)
 n_jobs = int(cli_args.get('n_jobs', 4))
 print(f'Running job with arguments\n{cli_args}')
 

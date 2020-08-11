@@ -54,7 +54,7 @@ for run in range(runs):
     skf = StratifiedKFold(n_splits=5, shuffle=True)
     for fold, (train_index, test_index) in enumerate(skf.split(x, y)):
         print(f'Starting fold {fold}')
-        train_x, test_x = x[train_index], x[test_index]
+        train_x, test_x = x.iloc[train_index], x.iloc[test_index]
         train_y, test_y = y[train_index], y[test_index]
         minority_size = (train_y == 1).sum() / len(train_y) * 100
         threshold = minority_size / 100

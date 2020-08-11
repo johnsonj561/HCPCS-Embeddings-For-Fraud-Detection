@@ -15,13 +15,24 @@ from gensim.models import KeyedVectors
 proj_dir = os.environ['CMS_ROOT']
 raw_data_path = os.environ['CMS_PARTB_PATH']
 
+columns = {
+    'npi': 'int64',
+    'provider_type': 'category',
+    'state_code': 'category',
+    'gender': 'category',
+    'hcpcs_code': 'category',
+    'line_srvc_cnt': 'float16',
+    'bene_unique_cnt': 'float16',
+    'bene_day_srvc_cnt': 'float16',
+    'average_submitted_chrg_amt': 'float16',
+    'average_medicare_payment_amt': 'float16',
+    'year': 'int16',
+    'exclusion': 'int8'
+}
+
 
 def load_data(sample_size=None):
-    columns = ['npi', 'provider_type', 'state_code', 'gender', 'hcpcs_code',
-               'line_srvc_cnt', 'bene_unique_cnt', 'bene_day_srvc_cnt', 'average_submitted_chrg_amt',
-               'average_medicare_payment_amt',
-               'year', 'exclusion']
-    df = pd.read_csv(raw_data_path, usecols=columns)
+    df = pd.read_csv(raw_data_path, usecols=columns.keys(), dtype=columns)
     if sample_size != None:
         df = df.sample(n=sample_size)
     df.reset_index(inplace=True)
@@ -34,40 +45,32 @@ def get_minority_size(df):
 
 
 def df_to_csr(df):
-    df = df.to_sparse().to_coo().astype('float32')
+    df = df.to_sparse().to_coo().astype('float16')
     return df.tocsr()
 
 
 def safe_embedding(embeddings, key):
     try:
-        return embeddings[key]
+        return embeddings[key].astype('float16')
     except KeyError:
-        return np.zeros(shape=(embeddings.vector_size))
+        return np.zeros(shape=(embeddings.vector_size), dtype='float16')
 
 
 def get_embedded_data(df, embedding_type, embedding_path, drop_columns):
     y = df['exclusion']
-    drop_columns = ['index', 'npi', 'year', 'exclusion', *drop_columns]
+    drop_columns = ['npi', 'year', 'exclusion', *drop_columns]
     df = df.drop(columns=drop_columns)
     if embedding_type == 'onehot':
         df = pd.get_dummies(df, sparse=True)
         df = df_to_csr(df)
     if embedding_type == 'skipgram' or embedding_type == 'cbow':
         embeddings = KeyedVectors.load(embedding_path)
-        hcpcs = df['hcpcs_code'].values
+        embeddings = np.array([safe_embedding(embeddings, x)
+                               for x in df['hcpcs_code'].values])
         df.drop(columns=['hcpcs_code'], inplace=True)
-        df = pd.concat(
-            [
-                df,
-                pd.DataFrame([safe_embedding(embeddings, x) for x in hcpcs],
-                             columns=[f'hcpcs_{i}' for i in range(
-                                 embeddings.vector_size)],
-                             index=df.index, dtype='float32'),
-            ],
-            axis=1
-        )
+        for col in range(embeddings.shape[1]):
+            df[f'hcpcs_{col}'] = embeddings[:, col]
         df = pd.get_dummies(df)
-        df = df_to_csr(df)
 
     return df, y
 

@@ -149,6 +149,8 @@ def get_class_weights(labels):
 
 
 def rounded_str(num, precision=6):
+    if num == None:
+        return ''
     if type(num) == str:
         return num
     return str(round(num, precision))

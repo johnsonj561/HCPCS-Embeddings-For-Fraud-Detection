@@ -33,6 +33,10 @@ columns = {
 
 def load_data(sample_size=None):
     df = pd.read_csv(raw_data_path, usecols=columns.keys(), dtype=columns)
+    df.replace([np.inf, -np.inf], np.nan, inplace=True)
+    print(f'Loaded data with shape: {df.shape}')
+    df.dropna(inplace=True)
+    print(f'Dropped nan, updated shape: {df.shape}')
     if sample_size != None:
         df = df.sample(n=sample_size)
     df.reset_index(inplace=True)

@@ -19,10 +19,17 @@ embedding_type = cli_args.get('embedding_type')
 embedding_path = cli_args.get('embedding_path')
 drop_columns = cli_args.get('drop_columns', '')
 drop_columns = drop_columns.split(',') if len(drop_columns) > 0 else []
+max_depth = int(cli_args.get('max_depth', 8))
 sample_size = cli_args.get('sample_size')
 if sample_size != None:
     sample_size = int(sample_size)
 n_jobs = int(cli_args.get('n_jobs', 4))
+l2_reg = cli_args.get('l2_reg')
+if l2_reg != None:
+  l2_reg = float(l2_reg)
+l1_reg = cli_args.get('l1_reg')
+if l1_reg != None:
+  l1_reg = float(l1_reg)
 print(f'Running job with arguments\n{cli_args}')
 
 # define configs
@@ -30,7 +37,6 @@ train_perf_filename = 'train-results.csv'
 test_perf_filename = 'test-results.csv'
 
 n_estimators = 5 if debug else 100
-max_depth = 8
 print(f'n_estimators: {n_estimators}')
 print(f'max_depth: {max_depth}')
 
@@ -48,13 +54,17 @@ for run in range(runs):
     # drop columns, onehot encode, or lookkup embeddings
     x, y = get_embedded_data(data, embedding_type,
                              embedding_path, drop_columns)
+    del data
     print(f'Encoded data shape: {x.shape}')
 
     # apply 5 fold stratified cross validation
     skf = StratifiedKFold(n_splits=5, shuffle=True)
     for fold, (train_index, test_index) in enumerate(skf.split(x, y)):
         print(f'Starting fold {fold}')
-        train_x, test_x = x.iloc[train_index], x.iloc[test_index]
+        if embedding_type == "onehot":
+          train_x, test_x = x[train_index], x[test_index]
+        else:
+          train_x, test_x = x.iloc[train_index], x.iloc[test_index]
         train_y, test_y = y[train_index], y[test_index]
         minority_size = (train_y == 1).sum() / len(train_y) * 100
         threshold = minority_size / 100
@@ -67,7 +77,9 @@ for run in range(runs):
         model = XGBClassifier(
             n_jobs=n_jobs,
             n_estimators=n_estimators,
-            max_depth=max_depth
+            max_depth=max_depth,
+            reg_alpha=l1_reg,
+            reg_lambda=l2_reg
         )
         model.fit(train_x, train_y)
         elapsed = timer.lap()
@@ -83,6 +95,8 @@ for run in range(runs):
             'dropped_columns': '|'.join(drop_columns),
             'max_depth': max_depth,
             'threshold': threshold,
+            'l2_reg': l2_reg,
+            'l1_reg': l1_reg
         }
 
         write_perf_metrics(train_perf_filename, train_y,

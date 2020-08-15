@@ -49,7 +49,7 @@ def get_minority_size(df):
 
 
 def df_to_csr(df):
-    df = df.to_sparse().to_coo().astype('float16')
+    df = df.to_sparse().to_coo().astype('float32')
     return df.tocsr()
 
 

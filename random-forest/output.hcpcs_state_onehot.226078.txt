@@ -1,0 +1,14 @@
+Running job with arguments
+{'runs': '5', 'n_jobs': '4', 'sample_size': '5000000', 'max_depth': '8', 'embedding_type': 'onehot'}
+n_estimators: 100
+max_depth: 8
+Starting run 0
+Loaded data with shape: (56808236, 12)
+Dropped nan, updated shape: (56794371, 12)
+Loaded data with shape (5000000, 13)
+Encoded data shape: (5000000, 7688)
+Starting fold 0
+Train shape: (3999999, 7688)
+Test shape: (1000001, 7688)
+Minority size: 0.033850008462502114
+Threshold: 0.0003385000846250211

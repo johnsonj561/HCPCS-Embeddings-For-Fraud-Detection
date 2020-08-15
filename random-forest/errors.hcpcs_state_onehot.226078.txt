@@ -1,0 +1,23 @@
+/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/utils/data.py:52: FutureWarning: DataFrame.to_sparse is deprecated and will be removed in a future version
+  df = df.to_sparse().to_coo().astype('float16')
+/mnt/beegfs/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/env/lib/python3.7/site-packages/pandas/core/frame.py:3451: FutureWarning: SparseSeries is deprecated and will be removed in a future version.
+Use a Series with sparse values instead.
+
+    >>> series = pd.Series(pd.SparseArray(...))
+
+See http://pandas.pydata.org/pandas-docs/stable/user_guide/sparse.html#migrating for more.
+
+  return klass(values, index=self.index, name=items, fastpath=True)
+Traceback (most recent call last):
+  File "main.py", line 78, in <module>
+    model.fit(train_x, train_y)
+  File "/mnt/beegfs/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/env/lib/python3.7/site-packages/sklearn/ensemble/forest.py", line 249, in fit
+    X = check_array(X, accept_sparse="csc", dtype=DTYPE)
+  File "/mnt/beegfs/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/env/lib/python3.7/site-packages/sklearn/utils/validation.py", line 486, in check_array
+    accept_large_sparse=accept_large_sparse)
+  File "/mnt/beegfs/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/env/lib/python3.7/site-packages/sklearn/utils/validation.py", line 320, in _ensure_sparse_format
+    allow_nan=force_all_finite == 'allow-nan')
+  File "/mnt/beegfs/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/env/lib/python3.7/site-packages/sklearn/utils/validation.py", line 56, in _assert_all_finite
+    raise ValueError(msg_err.format(type_err, X.dtype))
+ValueError: Input contains NaN, infinity or a value too large for dtype('float32').
+srun: error: node089: task 0: Exited with exit code 1

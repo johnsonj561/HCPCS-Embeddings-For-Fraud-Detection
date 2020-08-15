@@ -68,7 +68,6 @@ for run in range(runs):
         print(f'Test shape: {test_x.shape}')
         print(f'Minority size: {minority_size}')
         print(f'Threshold: {threshold}')
-        print('NA Values:\n', train_x.isna().any().any())
         timer.reset()
         model = RandomForestClassifier(
             n_estimators=n_estimators,

@@ -6,7 +6,7 @@
 #SBATCH -o output.hcpcs_state.%j.txt
 #SBATCH -p longq-bigdata7
 #SBATCH --mem-per-cpu=90000
-#SBATCH -w node088
+#SBATCH -w node089
 
 source $CMS_ROOT/env/bin/activate
 
@@ -16,4 +16,4 @@ srun python3 main.py \
   sample_size=5000000 \
   max_depth=8 \
   embedding_type=skipgram \
-  embedding_path=/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/data/embeddings-e150-w5-i100-t080120194624.kv
+  embedding_path=/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/data/skipgram-e150-w5-i100.kv

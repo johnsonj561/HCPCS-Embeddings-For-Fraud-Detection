@@ -1,0 +1,180 @@
+Running job with arguments
+{'runs': '5', 'n_jobs': '4', 'sample_size': '5000000', 'max_depth': '8', 'drop_columns': 'state_code', 'embedding_type': 'onehot', 'l2_reg': '2'}
+n_estimators: 100
+max_depth: 8
+Starting run 0
+Loaded data with shape: (56808236, 12)
+Dropped nan, updated shape: (56794371, 12)
+Loaded data with shape (5000000, 13)
+Encoded data shape: (5000000, 7627)
+Starting fold 0
+Train shape: (3999999, 7627)
+Test shape: (1000001, 7627)
+Minority size: 0.03315000828750207
+Threshold: 0.00033150008287502074
+Training completed in 911.519907951355
+Starting fold 1
+Train shape: (3999999, 7627)
+Test shape: (1000001, 7627)
+Minority size: 0.03315000828750207
+Threshold: 0.00033150008287502074
+Training completed in 866.8522937297821
+Starting fold 2
+Train shape: (4000000, 7627)
+Test shape: (1000000, 7627)
+Minority size: 0.03315
+Threshold: 0.0003315
+Training completed in 863.4152171611786
+Starting fold 3
+Train shape: (4000001, 7627)
+Test shape: (999999, 7627)
+Minority size: 0.03317499170625208
+Threshold: 0.0003317499170625208
+Training completed in 900.8300659656525
+Starting fold 4
+Train shape: (4000001, 7627)
+Test shape: (999999, 7627)
+Minority size: 0.03317499170625208
+Threshold: 0.0003317499170625208
+Training completed in 903.560206413269
+Starting run 1
+Loaded data with shape: (56808236, 12)
+Dropped nan, updated shape: (56794371, 12)
+Loaded data with shape (5000000, 13)
+Encoded data shape: (5000000, 7627)
+Starting fold 0
+Train shape: (3999999, 7627)
+Test shape: (1000001, 7627)
+Minority size: 0.03235000808750202
+Threshold: 0.00032350008087502017
+Training completed in 877.902143239975
+Starting fold 1
+Train shape: (3999999, 7627)
+Test shape: (1000001, 7627)
+Minority size: 0.03235000808750202
+Threshold: 0.00032350008087502017
+Training completed in 859.1511719226837
+Starting fold 2
+Train shape: (4000000, 7627)
+Test shape: (1000000, 7627)
+Minority size: 0.032350000000000004
+Threshold: 0.00032350000000000006
+Training completed in 864.5524170398712
+Starting fold 3
+Train shape: (4000001, 7627)
+Test shape: (999999, 7627)
+Minority size: 0.032374991906252024
+Threshold: 0.00032374991906252023
+Training completed in 855.1844520568848
+Starting fold 4
+Train shape: (4000001, 7627)
+Test shape: (999999, 7627)
+Minority size: 0.032374991906252024
+Threshold: 0.00032374991906252023
+Training completed in 863.1069388389587
+Starting run 2
+Loaded data with shape: (56808236, 12)
+Dropped nan, updated shape: (56794371, 12)
+Loaded data with shape (5000000, 13)
+Encoded data shape: (5000000, 7627)
+Starting fold 0
+Train shape: (4000000, 7627)
+Test shape: (1000000, 7627)
+Minority size: 0.0341
+Threshold: 0.000341
+Training completed in 863.6655275821686
+Starting fold 1
+Train shape: (4000000, 7627)
+Test shape: (1000000, 7627)
+Minority size: 0.0341
+Threshold: 0.000341
+Training completed in 855.0625422000885
+Starting fold 2
+Train shape: (4000000, 7627)
+Test shape: (1000000, 7627)
+Minority size: 0.0341
+Threshold: 0.000341
+Training completed in 859.703774690628
+Starting fold 3
+Train shape: (4000000, 7627)
+Test shape: (1000000, 7627)
+Minority size: 0.0341
+Threshold: 0.000341
+Training completed in 855.6850388050079
+Starting fold 4
+Train shape: (4000000, 7627)
+Test shape: (1000000, 7627)
+Minority size: 0.0341
+Threshold: 0.000341
+Training completed in 799.0479791164398
+Starting run 3
+Loaded data with shape: (56808236, 12)
+Dropped nan, updated shape: (56794371, 12)
+Loaded data with shape (5000000, 13)
+Encoded data shape: (5000000, 7627)
+Starting fold 0
+Train shape: (3999999, 7627)
+Test shape: (1000001, 7627)
+Minority size: 0.032225008056252016
+Threshold: 0.00032225008056252014
+Training completed in 817.0127506256104
+Starting fold 1
+Train shape: (3999999, 7627)
+Test shape: (1000001, 7627)
+Minority size: 0.032225008056252016
+Threshold: 0.00032225008056252014
+Training completed in 804.8899829387665
+Starting fold 2
+Train shape: (4000000, 7627)
+Test shape: (1000000, 7627)
+Minority size: 0.03225
+Threshold: 0.00032250000000000003
+Training completed in 814.6019520759583
+Starting fold 3
+Train shape: (4000001, 7627)
+Test shape: (999999, 7627)
+Minority size: 0.03224999193750201
+Threshold: 0.00032249991937502014
+Training completed in 811.5334956645966
+Starting fold 4
+Train shape: (4000001, 7627)
+Test shape: (999999, 7627)
+Minority size: 0.03224999193750201
+Threshold: 0.00032249991937502014
+Training completed in 814.3538756370544
+Starting run 4
+Loaded data with shape: (56808236, 12)
+Dropped nan, updated shape: (56794371, 12)
+Loaded data with shape (5000000, 13)
+Encoded data shape: (5000000, 7627)
+Starting fold 0
+Train shape: (3999999, 7627)
+Test shape: (1000001, 7627)
+Minority size: 0.03250000812500203
+Threshold: 0.0003250000812500203
+Training completed in 813.5374157428741
+Starting fold 1
+Train shape: (4000000, 7627)
+Test shape: (1000000, 7627)
+Minority size: 0.032525
+Threshold: 0.00032524999999999996
+Training completed in 801.3716328144073
+Starting fold 2
+Train shape: (4000000, 7627)
+Test shape: (1000000, 7627)
+Minority size: 0.032525
+Threshold: 0.00032524999999999996
+Training completed in 799.666412115097
+Starting fold 3
+Train shape: (4000000, 7627)
+Test shape: (1000000, 7627)
+Minority size: 0.032525
+Threshold: 0.00032524999999999996
+Training completed in 811.0752222537994
+Starting fold 4
+Train shape: (4000001, 7627)
+Test shape: (999999, 7627)
+Minority size: 0.03252499186875203
+Threshold: 0.0003252499186875203
+Training completed in 800.7450473308563
+Job complete

@@ -1,0 +1,15 @@
+Running job with arguments
+{'runs': '5', 'n_jobs': '4', 'sample_size': '5000000', 'max_depth': '8', 'drop_columns': 'state_code', 'embedding_type': 'skipgram300', 'embedding_path': '/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/data/skipgram-e300-w5-i100.kv'}
+n_estimators: 100
+max_depth: 8
+Starting run 0
+Loaded data with shape: (56808236, 12)
+Dropped nan, updated shape: (56794371, 12)
+Loaded data with shape (5000000, 13)
+Using skipgram300 embedding
+Encoded data shape: (5000000, 407)
+Starting fold 0
+Train shape: (4000000, 407)
+Test shape: (1000000, 407)
+Minority size: 0.0334
+Threshold: 0.000334

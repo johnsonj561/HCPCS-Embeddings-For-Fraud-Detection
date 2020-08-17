@@ -65,9 +65,11 @@ def get_embedded_data(df, embedding_type, embedding_path, drop_columns):
     drop_columns = ['npi', 'year', 'exclusion', *drop_columns]
     df = df.drop(columns=drop_columns)
     if embedding_type == 'onehot':
+        print('Using onehot embedding')
         df = pd.get_dummies(df, sparse=True)
         df = df_to_csr(df)
-    if embedding_type == 'skipgram' or embedding_type == 'cbow':
+    if 'skipgram' in embedding_type or 'cbow' in embedding_type:
+        print(f'Using {embedding_type} embedding')
         embeddings = KeyedVectors.load(embedding_path)
         embeddings = np.array([safe_embedding(embeddings, x)
                                for x in df['hcpcs_code'].values])

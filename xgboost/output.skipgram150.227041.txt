@@ -1,0 +1,77 @@
+Running job with arguments
+{'runs': '2', 'n_jobs': '4', 'sample_size': '5000000', 'max_depth': '4', 'drop_columns': 'state_code', 'embedding_type': 'skipgram150', 'embedding_path': '/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/data/skipgram-e150-w5-i100.kv'}
+n_estimators: 100
+max_depth: 4
+Starting run 0
+Loaded data with shape: (56808236, 12)
+Dropped nan, updated shape: (56794371, 12)
+Loaded data with shape (5000000, 13)
+Using skipgram150 embedding
+Encoded data shape: (5000000, 257)
+Starting fold 0
+Train shape: (3999999, 257)
+Test shape: (1000001, 257)
+Minority size: 0.032425008106252026
+Threshold: 0.00032425008106252024
+Training completed in 7700.471304655075
+Starting fold 1
+Train shape: (3999999, 257)
+Test shape: (1000001, 257)
+Minority size: 0.032425008106252026
+Threshold: 0.00032425008106252024
+Training completed in 7546.835829257965
+Starting fold 2
+Train shape: (4000000, 257)
+Test shape: (1000000, 257)
+Minority size: 0.03245
+Threshold: 0.0003245
+Training completed in 6806.3964285850525
+Starting fold 3
+Train shape: (4000001, 257)
+Test shape: (999999, 257)
+Minority size: 0.03244999188750203
+Threshold: 0.0003244999188750203
+Training completed in 6929.401581525803
+Starting fold 4
+Train shape: (4000001, 257)
+Test shape: (999999, 257)
+Minority size: 0.03244999188750203
+Threshold: 0.0003244999188750203
+Training completed in 6854.964428424835
+Starting run 1
+Loaded data with shape: (56808236, 12)
+Dropped nan, updated shape: (56794371, 12)
+Loaded data with shape (5000000, 13)
+Using skipgram150 embedding
+Encoded data shape: (5000000, 257)
+Starting fold 0
+Train shape: (4000000, 257)
+Test shape: (1000000, 257)
+Minority size: 0.0324
+Threshold: 0.00032399999999999996
+Training completed in 6809.000227928162
+Starting fold 1
+Train shape: (4000000, 257)
+Test shape: (1000000, 257)
+Minority size: 0.0324
+Threshold: 0.00032399999999999996
+Training completed in 6799.379906415939
+Starting fold 2
+Train shape: (4000000, 257)
+Test shape: (1000000, 257)
+Minority size: 0.0324
+Threshold: 0.00032399999999999996
+Training completed in 6825.851086854935
+Starting fold 3
+Train shape: (4000000, 257)
+Test shape: (1000000, 257)
+Minority size: 0.0324
+Threshold: 0.00032399999999999996
+Training completed in 6844.190958023071
+Starting fold 4
+Train shape: (4000000, 257)
+Test shape: (1000000, 257)
+Minority size: 0.0324
+Threshold: 0.00032399999999999996
+Training completed in 6848.164080619812
+Job complete

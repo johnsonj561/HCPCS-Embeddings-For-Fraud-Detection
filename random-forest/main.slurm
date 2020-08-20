@@ -5,8 +5,8 @@
 #SBATCH -e errors.skipgram300.%j.txt
 #SBATCH -o output.skipgram300.%j.txt
 #SBATCH -p longq-bigdata7
-#SBATCH --mem-per-cpu=90000
-#SBATCH -w node089
+#SBATCH --mem-per-cpu=110000
+#SBATCH -w node090
 
 source $CMS_ROOT/env/bin/activate
 

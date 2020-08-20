@@ -61,7 +61,7 @@ for run in range(runs):
     skf = StratifiedKFold(n_splits=5, shuffle=True)
     for fold, (train_index, test_index) in enumerate(skf.split(x, y)):
         print(f'Starting fold {fold}')
-        if embedding_type == "onehot":
+        if "onehot" in embedding_type:
           train_x, test_x = x[train_index], x[test_index]
         else:
           train_x, test_x = x.iloc[train_index], x.iloc[test_index]

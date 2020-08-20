@@ -49,7 +49,7 @@ def get_minority_size(df):
 
 
 def df_to_csr(df):
-    df = df.to_sparse().to_coo().astype('float32')
+    df = df.to_sparse().to_coo().astype('float16')
     return df.tocsr()
 
 
@@ -64,7 +64,8 @@ def get_embedded_data(df, embedding_type, embedding_path, drop_columns):
     y = df['exclusion']
     drop_columns = ['npi', 'year', 'exclusion', *drop_columns]
     df = df.drop(columns=drop_columns)
-    if embedding_type == 'onehot':
+    print(f'Using columns {df.columns}')
+    if 'onehot' in embedding_type:
         print('Using onehot embedding')
         df = pd.get_dummies(df, sparse=True)
         df = df_to_csr(df)

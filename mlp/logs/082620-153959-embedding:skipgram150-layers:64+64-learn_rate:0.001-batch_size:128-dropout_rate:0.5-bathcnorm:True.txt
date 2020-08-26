@@ -1,0 +1,47 @@
+0 min, 0 sec: Starting job
+0 min, 0 sec: Using ts: {ts}
+0 min, 0 sec: Outputs being written to ['validation-auc-results.csv', 'train-auc-results.csv']
+0 min, 0 sec: Starting run 0
+4 min, 47 sec: Loaded embedded data with shape (5000000, 256)
+5 min, 16 sec: Starting training...
+7 min, 33 sec: Epoch: 0  val_auc: 0.7832444470309597
+10 min, 40 sec: Epoch: 1  val_auc: 0.7814885711027909
+13 min, 47 sec: Epoch: 2  val_auc: 0.7917168714187416
+16 min, 54 sec: Epoch: 3  val_auc: 0.7886204348448109
+20 min, 1 sec: Epoch: 4  val_auc: 0.7873511870356193
+23 min, 8 sec: Epoch: 5  val_auc: 0.787947424134794
+26 min, 15 sec: Epoch: 6  val_auc: 0.7885389129635868
+29 min, 22 sec: Epoch: 7  val_auc: 0.7887618574622802
+32 min, 28 sec: Epoch: 8  val_auc: 0.7898150149548698
+35 min, 32 sec: Epoch: 9  val_auc: 0.7897263334252618
+38 min, 37 sec: Epoch: 10  val_auc: 0.7902143609710985
+41 min, 41 sec: Epoch: 11  val_auc: 0.7893898096369425
+44 min, 45 sec: Epoch: 12  val_auc: 0.7902699678745012
+45 min, 42 sec: Trainin complete!
+45 min, 42 sec: Using threshold 0.000662
+45 min, 58 sec: Starting run 1
+50 min, 39 sec: Loaded embedded data with shape (5000000, 256)
+51 min, 8 sec: Starting training...
+53 min, 22 sec: Epoch: 0  val_auc: 0.7963657914638396
+56 min, 25 sec: Epoch: 1  val_auc: 0.7977491600662179
+59 min, 28 sec: Epoch: 2  val_auc: 0.7971106290595997
+62 min, 31 sec: Epoch: 3  val_auc: 0.7983443777831223
+65 min, 35 sec: Epoch: 4  val_auc: 0.8021032205262897
+68 min, 38 sec: Epoch: 5  val_auc: 0.8005875328605537
+71 min, 41 sec: Epoch: 6  val_auc: 0.799597954109051
+74 min, 44 sec: Epoch: 7  val_auc: 0.7999298487501371
+77 min, 48 sec: Epoch: 8  val_auc: 0.8017020790833649
+80 min, 51 sec: Epoch: 9  val_auc: 0.8004961670797462
+83 min, 54 sec: Epoch: 10  val_auc: 0.8001900738553246
+86 min, 57 sec: Epoch: 11  val_auc: 0.8031610941067601
+89 min, 60 sec: Epoch: 12  val_auc: 0.7970261160075381
+93 min, 3 sec: Epoch: 13  val_auc: 0.8013758970174699
+96 min, 6 sec: Epoch: 14  val_auc: 0.8014039949764405
+99 min, 9 sec: Epoch: 15  val_auc: 0.8001714225666833
+102 min, 13 sec: Epoch: 16  val_auc: 0.7986645122384127
+105 min, 16 sec: Epoch: 17  val_auc: 0.7990640877228625
+108 min, 19 sec: Epoch: 18  val_auc: 0.8028889936934763
+111 min, 22 sec: Epoch: 19  val_auc: 0.8024530779361032
+114 min, 25 sec: Epoch: 20  val_auc: 0.8001102077592088
+117 min, 28 sec: Epoch: 21  val_auc: 0.8000851162633988
+118 min, 24 sec: Trainin complete!

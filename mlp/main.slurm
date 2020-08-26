@@ -6,7 +6,7 @@
 #SBATCH -o output.mlp_sg150_64+64_do0pt5.%j.txt
 #SBATCH -p longq-bigdata7
 #SBATCH --mem-per-cpu=90000
-#SBATCH -w node093
+#SBATCH -w node089
 
 source $CMS_ROOT/env/bin/activate
 
@@ -14,7 +14,7 @@ source $CMS_ROOT/env/bin/activate
 # module load cudnn-7.6.5.32-10.1-linux-x64-gcc-8.3.0-vldxhwt
 
 srun python3 main.py \
-  sample_size=500000 \
+  sample_size=5000000 \
   runs=2 \
   epochs=100 \
   drop_columns=state_code \

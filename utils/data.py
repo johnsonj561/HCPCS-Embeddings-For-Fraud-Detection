@@ -15,11 +15,26 @@ from gensim.models import KeyedVectors
 proj_dir = os.environ['CMS_ROOT']
 raw_data_path = os.environ['CMS_PARTB_PATH']
 
+#columns = {
+#    'npi': 'int64',
+#    'provider_type': 'category',
+#    'state_code': 'category',
+#    'gender': 'category',
+#    'hcpcs_code': 'category',
+#    'line_srvc_cnt': 'float32',
+#    'bene_unique_cnt': 'float32',
+#    'bene_day_srvc_cnt': 'float32',
+#    'average_submitted_chrg_amt': 'float32',
+#    'average_medicare_payment_amt': 'float32',
+#    'year': 'int16',
+#    'exclusion': 'int8'
+#}
+
 columns = {
     'npi': 'int64',
     'provider_type': 'category',
-    'state_code': 'category',
-    'gender': 'category',
+    'nppes_provider_state': 'category',
+    'nppes_provider_gender': 'category',
     'hcpcs_code': 'category',
     'line_srvc_cnt': 'float32',
     'bene_unique_cnt': 'float32',
@@ -30,10 +45,10 @@ columns = {
     'exclusion': 'int8'
 }
 
-
 def load_data(sample_size=None):
+    print(f'Loading data from path {raw_data_path}')
     df = pd.read_csv(raw_data_path, usecols=columns.keys(), dtype=columns)
-    df.replace([np.inf, -np.inf], np.nan, inplace=True)
+    # df.replace([np.inf, -np.inf], np.nan, inplace=True)
     print(f'Loaded data with shape: {df.shape}')
     df.dropna(inplace=True)
     print(f'Dropped nan, updated shape: {df.shape}')
@@ -62,7 +77,7 @@ def safe_embedding(embeddings, key):
 
 def get_embedded_data(df, embedding_type, embedding_path, drop_columns):
     y = df['exclusion']
-    drop_columns = ['npi', 'year', 'exclusion', *drop_columns]
+    drop_columns = ['index', 'npi', 'year', 'exclusion', *drop_columns]
     df = df.drop(columns=drop_columns)
     print(f'Using columns {df.columns}')
     if 'onehot' in embedding_type:

@@ -6,7 +6,6 @@
 #SBATCH -o output.sg300.%j.txt
 #SBATCH -p longq-bigdata7
 #SBATCH --mem-per-cpu=100000
-#SBATCH -w node090
 
 source $CMS_ROOT/env/bin/activate
 

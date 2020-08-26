@@ -157,10 +157,10 @@ def rounded_str(num, precision=6):
 
 
 perf_metrics = ['key', 'depth', 'width', 'tp', 'fp', 'tn', 'fn', 'tpr', 'tnr',
-                'roc_auc', 'geometric_mean', 'arithmetic_mean', 'f1_score', 'precision']
+                'roc_auc', 'geometric_mean', 'precision']
 
 
-def write_dnn_perf_metrics(y_true, y_prob, threshold, key, depth, width, path):
+def write_dnn_perf_metrics(y_true, y_prob, threshold, key, path):
     # include header if file doesn't exist yet
     out = ",".join(perf_metrics) if not os.path.isfile(path) else ''
 
@@ -170,12 +170,9 @@ def write_dnn_perf_metrics(y_true, y_prob, threshold, key, depth, width, path):
     tnr = (tn) / (tn + fp)
     roc_auc = roc_auc_score(y_true, y_prob)
     geometric_mean = math.sqrt(tpr * tnr)
-    arithmetic_mean = 0.5 * (tpr + tnr)
-    f1 = f1_score(y_true, predictions)
     precision = precision_score(y_true, predictions)
 
-    results = [key, depth, width, tp, fp, tn, fn, tpr, tnr,
-               roc_auc, geometric_mean, arithmetic_mean, f1, precision]
+    results = [key, tp, fp, tn, fn, tpr, tnr, roc_auc, geometric_mean, precision]
     results = [rounded_str(x) for x in results]
     out += '\n' + ','.join(results)
 
@@ -204,30 +201,6 @@ def write_perf_metrics(path, y_true, y_prob, threshold, extras):
 
     with open(path, 'a') as outfile:
         outfile.write(out)
-
-
-def get_best_threshold(train_x, train_y, model, delta=0.1):
-    curr_thresh = 0.0
-    best_thresh = 0.0
-    best_gmean = 0.0
-
-    y_prob = model.predict_proba(train_x)[:, 1]
-
-    while True:
-        y_pred = np.where(y_prob > curr_thresh, np.ones_like(
-            y_prob), np.zeros_like(y_prob))
-        tn, fp, fn, tp = confusion_matrix(train_y, y_pred).ravel()
-        tpr = (tp) / (tp + fn)
-        tnr = (tn) / (tn + fp)
-        if tnr > tpr:
-            return best_thresh
-        gmean = math.sqrt(tpr * tnr)
-        if gmean > best_gmean:
-            best_gmean = gmean
-            best_thresh = curr_thresh
-        curr_thresh += delta
-
-    return best_thresh
 
 
 class Timer():

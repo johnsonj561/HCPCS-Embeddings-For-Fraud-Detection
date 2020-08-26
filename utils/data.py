@@ -21,11 +21,11 @@ columns = {
     'state_code': 'category',
     'gender': 'category',
     'hcpcs_code': 'category',
-    'line_srvc_cnt': 'float16',
-    'bene_unique_cnt': 'float16',
-    'bene_day_srvc_cnt': 'float16',
-    'average_submitted_chrg_amt': 'float16',
-    'average_medicare_payment_amt': 'float16',
+    'line_srvc_cnt': 'float32',
+    'bene_unique_cnt': 'float32',
+    'bene_day_srvc_cnt': 'float32',
+    'average_submitted_chrg_amt': 'float32',
+    'average_medicare_payment_amt': 'float32',
     'year': 'int16',
     'exclusion': 'int8'
 }
@@ -49,13 +49,13 @@ def get_minority_size(df):
 
 
 def df_to_csr(df):
-    df = df.to_sparse().to_coo().astype('float16')
+    df = df.to_sparse().to_coo().astype('float32')
     return df.tocsr()
 
 
 def safe_embedding(embeddings, key):
     try:
-        return embeddings[key].astype('float16')
+        return embeddings[key].astype('float32')
     except KeyError:
         return np.zeros(shape=(embeddings.vector_size), dtype='float16')
 
@@ -81,25 +81,3 @@ def get_embedded_data(df, embedding_type, embedding_path, drop_columns):
 
     return df, y
 
-
-def get_train_test(df, with_hcpcs=True, with_categorical=False):
-    y = df['exclusion']
-    train_ind, test_ind = train_test_split(
-        np.arange(0, df.shape[0], 1), test_size=0.2, random_state=42)
-    if with_categorical:
-        train_x = df.iloc[train_ind]
-        test_x = df.iloc[test_ind]
-        train_y = y[train_ind]
-        test_y = y[test_ind]
-        return train_x, test_x, train_y, test_y
-
-    if not with_hcpcs:
-        df = df.drop(columns=['hcpcs_code'])
-
-    df = pd.get_dummies(df, sparse=True)
-    df = df_to_csr(df)
-    train_x = df[train_ind]
-    test_x = df[test_ind]
-    train_y = y[train_ind]
-    test_y = y[test_ind]
-    return train_x, test_x, train_y, test_y

@@ -15,26 +15,11 @@ from gensim.models import KeyedVectors
 proj_dir = os.environ['CMS_ROOT']
 raw_data_path = os.environ['CMS_PARTB_PATH']
 
-#columns = {
-#    'npi': 'int64',
-#    'provider_type': 'category',
-#    'state_code': 'category',
-#    'gender': 'category',
-#    'hcpcs_code': 'category',
-#    'line_srvc_cnt': 'float32',
-#    'bene_unique_cnt': 'float32',
-#    'bene_day_srvc_cnt': 'float32',
-#    'average_submitted_chrg_amt': 'float32',
-#    'average_medicare_payment_amt': 'float32',
-#    'year': 'int16',
-#    'exclusion': 'int8'
-#}
-
 columns = {
     'npi': 'int64',
     'provider_type': 'category',
-    'nppes_provider_state': 'category',
-    'nppes_provider_gender': 'category',
+    'state_code': 'category',
+    'gender': 'category',
     'hcpcs_code': 'category',
     'line_srvc_cnt': 'float32',
     'bene_unique_cnt': 'float32',
@@ -44,6 +29,21 @@ columns = {
     'year': 'int16',
     'exclusion': 'int8'
 }
+
+#columns = {
+#    'npi': 'int64',
+#    'provider_type': 'category',
+#    'nppes_provider_state': 'category',
+#    'nppes_provider_gender': 'category',
+#    'hcpcs_code': 'category',
+#    'line_srvc_cnt': 'float32',
+#    'bene_unique_cnt': 'float32',
+#    'bene_day_srvc_cnt': 'float32',
+#    'average_submitted_chrg_amt': 'float32',
+#    'average_medicare_payment_amt': 'float32',
+#    'year': 'int16',
+#    'exclusion': 'int8'
+#}
 
 def load_data(sample_size=None):
     print(f'Loading data from path {raw_data_path}')
@@ -94,5 +94,6 @@ def get_embedded_data(df, embedding_type, embedding_path, drop_columns):
             df[f'hcpcs_{col}'] = embeddings[:, col]
         df = pd.get_dummies(df)
 
+    print(f'Embedded data shape: {df.shape}')
     return df, y
 

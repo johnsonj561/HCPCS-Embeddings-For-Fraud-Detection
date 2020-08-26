@@ -1,122 +1,168 @@
-from sklearn.model_selection import StratifiedKFold
-from sklearn.ensemble import RandomForestClassifier
-import pandas as pd
-import sys
 import os
+import sys
+import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import MaxAbsScaler
+import datetime
+
+import tensorflow as tf
+K = tf.keras.backend
+EarlyStopping = tf.keras.callbacks.EarlyStopping
+ReduceLROnPlateau = tf.keras.callbacks.ReduceLROnPlateau
+TensorBoard = tf.keras.callbacks.TensorBoard
 
 proj_dir = os.environ['CMS_ROOT']
 sys.path.append(proj_dir)
-from utils.utils import args_to_dict, write_perf_metrics, Timer
-from utils.utils import get_best_threshold, get_imbalance_description
+from utils.utils import model_summary_to_string, args_to_dict, write_dnn_perf_metrics
+from utils.logging import Logger
+from utils.keras_callbacks import KerasRocAucCallback
 from utils.data import load_data, get_embedded_data
+from utils.mlp import create_model
 
-# parse arguments
-filename = sys.argv[0].replace('.py', '')
+
+
+############################################
+# Parse CLI Args & Create DNN Config
+############################################
+
+config = {}
 cli_args = args_to_dict(sys.argv)
+
 debug = cli_args.get('debug') == 'true'
-runs = int(cli_args.get('runs', 1))
+
+hidden_layers_markup = cli_args.get('hidden_layers')
+config['hidden_layers'] = [int(nodes) for nodes in hidden_layers_markup.split('+')]
+config['learn_rate'] = float(cli_args.get('learn_rate', 1e-3))
+config['batch_size'] = int(cli_args.get('batch_size', 128))
+dropout_rate = cli_args.get('dropout_rate')
+config['dropout_rate'] = float(dropout_rate) if dropout_rate != None else dropout_rate
+batchnorm = cli_args.get('batchnorm', 'false')
+config['batchnorm'] = True if batchnorm.lower() == 'true' else False
+epochs = int(cli_args.get('epochs', 10))
+use_lr_reduction = cli_args.get('use_lr_reduction') == 'true'
+
 embedding_type = cli_args.get('embedding_type')
 embedding_path = cli_args.get('embedding_path')
 drop_columns = cli_args.get('drop_columns', '')
 drop_columns = drop_columns.split(',') if len(drop_columns) > 0 else []
-max_depth = int(cli_args.get('max_depth', 8))
 sample_size = cli_args.get('sample_size')
 if sample_size != None:
     sample_size = int(sample_size)
-n_jobs = int(cli_args.get('n_jobs', 4))
-print(f'Running job with arguments\n{cli_args}')
 
-# define configs
-train_perf_filename = 'train-results.csv'
-test_perf_filename = 'test-results.csv'
+runs = int(cli_args.get('runs', 1))
 
-# init timer
-timer = Timer()
+    
+    
+############################################
+# Initialize I/O
+############################################
 
-# iterate over runs
+now = datetime.datetime.today()
+ts = now.strftime("%m%d%y-%H%M%S")
+validation_auc_outputs = 'validation-auc-results.csv'
+train_auc_outputs = 'train-auc-results.csv'
+results_file = 'results.csv'
+
+config_value = f'embedding:{embedding_type}-layers:{hidden_layers_markup}-learn_rate:{config.get("learn_rate")}'
+config_value += f'-batch_size:{config.get("batch_size")}-dropout_rate:{config.get("dropout_rate")}-bathcnorm:{config.get("batchnorm")}'
+
+if not os.path.isfile(train_auc_outputs):
+    results_header = 'config,' + ','.join([f'ep_{i}' for i in range(epochs)])
+    output_files = [train_auc_outputs, validation_auc_outputs]
+    output_headers = [results_header,results_header]
+    for file, header in zip(output_files, output_headers):
+        with open(file, 'w') as fout:
+            fout.write(header + '\n')
+
+def write_results(file, results):
+    with open(file, 'a') as fout:
+        fout.write(results + '\n')
+        
+log_file = f'logs/{ts}-{config_value}.txt'
+logger = Logger(log_file)
+logger.log_time('Starting job')
+logger.log_time('Using ts: {ts}')
+logger.log_time(f'Outputs being written to {[validation_auc_outputs,train_auc_outputs]}')
+logger.write_to_file()
+
+
+############################################
+# Iterate Over Runs
+############################################
 for run in range(runs):
-    print(f'Starting run {run}')
+    
+    logger.log_time(f'Starting run {run}')
 
-    # load data
+    ############################################
+    # Load Data
+    ############################################
+
     data = load_data(sample_size)
-    print(f'Loaded data with shape {data.shape}')
 
     # drop columns, onehot encode, or lookkup embeddings
-    x, y = get_embedded_data(data, embedding_type,
-                             embedding_path, drop_columns)
+    x, y = get_embedded_data(data, embedding_type, embedding_path, drop_columns)
+
     del data
-    print(f'Encoded data shape: {x.shape}')
+    logger.log_time(f'Loaded embedded data with shape {x.shape}')
 
-    minority_size = (y == 1).sum() / len(y) * 100
+
+    ############################################
+    # Train/Test Split & Normalize
+    ############################################
+
+    x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2)
+    del x, y
+    scaler = MaxAbsScaler()
+    x_train = scaler.fit_transform(x_train)
+    x_test = scaler.transform(x_test)
+
+
+
+    ############################################
+    # Setup Training Callbacks
+    ############################################
+
+    validation_auc_callback = KerasRocAucCallback(x_test, y_test, True, logger)
+    train_auc_callback = KerasRocAucCallback(x_train, y_train)
+    early_stopping = EarlyStopping(monitor='val_auc', min_delta=0.001, patience=10, mode='max')
+    tensorboard_dir = f'tensorboard/{ts}-{config_value}'
+    tensorboard = TensorBoard(log_dir=f'{tensorboard_dir}', write_graph=False)
+    callbacks = [validation_auc_callback, train_auc_callback, early_stopping, tensorboard]
+
+
+
+    ############################################
+    # Train Model
+    ############################################
+
+    K.clear_session()
+    input_dim = x_train.shape[1]
+    model = create_model(input_dim, config)
+
+    logger.log_time('Starting training...').write_to_file()
+    history = model.fit(x_train, y_train, epochs=epochs, callbacks=callbacks, verbose=1)
+    logger.log_time('Trainin complete!').write_to_file()
+
+
+
+    ############################################
+    # Write Results
+    ############################################
+    validation_aucs = np.array(history.history['val_auc'], dtype=str)
+    write_results(validation_auc_outputs, f'{config_value},{",".join(validation_aucs)}')
+    train_aucs = np.array(history.history['train_auc'], dtype=str)
+    write_results(train_auc_outputs, f'{config_value},{",".join(train_aucs)}')
+
+    minority_size = (y_train == 1).sum() / len(y_train) * 100
     threshold = minority_size / 100
-    print(f'Train shape: {x.shape}')
-    print(f'Minority size: {minority_size}')
-    print(f'Threshold: {threshold}')
+    logger.log_time(f'Using threshold {threshold}')
 
-    timer.reset()
+    y_prob = model.predict(x_test)
+    write_dnn_perf_metrics(y_test, y_prob, threshold, config_value, results_file)
 
-    # RECORD EPOCH TIMES
-    # -------------------------------------------------- #
-    epochTimer = EpochTimerCallback(timings_results_file)
+    # free some memory
+    del history, x_test, y_test, x_train, y_train
+    del model
 
-    # BUILD MODEL
-    # -------------------------------------------------- #
-    _, input_dim = train_x.shape
-
-    model = Sequential()
-    model.add(Dense(width, input_dim=input_dim))
-    model.add(BatchNormalization())
-    model.add(Activation(activation))
-    model.add(Dropout(dropout_rate))
-
-    for _ in range(depth - 1):
-        model.add(Dense(width))
-        model.add(BatchNormalization())
-        model.add(Activation(activation))
-        model.add(Dropout(dropout_rate))
-
-    # classification layer
-    model.add(Dense(1, activation='sigmoid'))
-
-    # TRAIN MODEL
-    # -------------------------------------------------- #
-    optimizer = Adam(lr=learn_rate)
-    model.compile(loss='binary_crossentropy',
-                  optimizer=optimizer, metrics=['acc'])
-
-    print('MODEL COMPILED')
-    print('BEGINNING TRAINING')
-
-    history = model.fit(
-        x=x,
-        y=y,
-        validation_split=0.2,
-        epochs=epochs,
-        batch_size=256,
-        verbose=0,
-        callbacks=[epochTimer],
-    )
-
-    elapsed = timer.lap()
-    print(f'Training completed in {elapsed}')
-
-    train_y_prob = model.predict_proba(train_x)[:, 1]
-    test_y_prob = model.predict_proba(test_x)[:, 1]
-
-    extras = {
-        'elapsed': elapsed,
-        'minority_size': minority_size,
-        'embedding_type': embedding_type,
-        'dropped_columns': '|'.join(drop_columns),
-        'max_depth': max_depth,
-        'threshold': threshold,
-    }
-
-    write_perf_metrics(train_perf_filename, train_y,
-                       train_y_prob, threshold, extras)
-    write_perf_metrics(test_perf_filename, test_y,
-                       test_y_prob, threshold, extras)
-
-    # free up memory
-    del train_x, train_y, test_x, test_y
 print('Job complete')

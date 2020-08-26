@@ -59,7 +59,7 @@ runs = int(cli_args.get('runs', 1))
 ############################################
 
 now = datetime.datetime.today()
-ts = now.strftime("%m%d%y-%H%M%S")
+
 validation_auc_outputs = 'validation-auc-results.csv'
 train_auc_outputs = 'train-auc-results.csv'
 results_file = 'results.csv'
@@ -78,22 +78,23 @@ if not os.path.isfile(train_auc_outputs):
 def write_results(file, results):
     with open(file, 'a') as fout:
         fout.write(results + '\n')
-        
-log_file = f'logs/{ts}-{config_value}.txt'
-logger = Logger(log_file)
-logger.log_time('Starting job')
-logger.log_time('Using ts: {ts}')
-logger.log_time(f'Outputs being written to {[validation_auc_outputs,train_auc_outputs]}')
-logger.write_to_file()
+
+
 
 
 ############################################
 # Iterate Over Runs
 ############################################
 for run in range(runs):
-    
+    ts = now.strftime("%m%d%y-%H%M%S")
+    log_file = f'logs/{ts}-{config_value}.txt'
+    logger = Logger(log_file)
     logger.log_time(f'Starting run {run}')
-
+    logger.log_time('Using ts: {ts}')
+    logger.log_time(f'Outputs being written to {[validation_auc_outputs,train_auc_outputs]}')
+    logger.write_to_file()
+    
+    
     ############################################
     # Load Data
     ############################################
@@ -106,6 +107,7 @@ for run in range(runs):
     del data
     logger.log_time(f'Loaded embedded data with shape {x.shape}')
 
+    
 
     ############################################
     # Train/Test Split & Normalize

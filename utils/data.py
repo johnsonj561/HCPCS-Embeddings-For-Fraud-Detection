@@ -55,7 +55,27 @@ def load_data(sample_size=None):
     if sample_size != None:
         df = df.sample(n=sample_size)
     df.reset_index(inplace=True)
-    return df
+    return 
+
+
+def load_sampled_data(sample_size):
+    raw_data_path = os.environ['CMS_PARTB_PATH']
+    print(f'Loading data from path {raw_data_path}')
+    df = pd.read_csv(raw_data_path, usecols=columns.keys(), dtype=columns)
+    print(f'Loaded data with shape: {df.shape}')
+    df.dropna(inplace=True)
+    print(f'Dropped nan, updated shape: {df.shape}')
+    pos_mask = df.exclusion == 1
+    pos_samples = df.loc[pos_mask]
+    pos_count = len(pos_samples)
+    neg_count = sample_size - pos_count
+    neg_samples = df.loc[~pos_mask].sample(neg_count)
+    print(f'Positive sample count: {pos_count} {pos_count / (pos_count + neg_count) * 100}%')
+    print(f'Negative sample count: {neg_count} {neg_count / (pos_count + neg_count) * 100}%')
+    return pd.concat([pos_samples, neg_samples], axis=0) \
+        .sample(frac=1) \
+        .reset_index(drop=True)
+    
 
 
 def get_minority_size(df):

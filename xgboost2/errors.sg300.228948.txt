@@ -1,0 +1,19 @@
+Traceback (most recent call last):
+  File "main.py", line 51, in <module>
+    data = load_data(sample_size)
+  File "/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/utils/data.py", line 50, in load_data
+    df = pd.read_csv(raw_data_path, usecols=columns.keys(), dtype=columns)
+  File "/mnt/beegfs/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/env/lib/python3.7/site-packages/pandas/io/parsers.py", line 685, in parser_f
+    return _read(filepath_or_buffer, kwds)
+  File "/mnt/beegfs/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/env/lib/python3.7/site-packages/pandas/io/parsers.py", line 457, in _read
+    parser = TextFileReader(fp_or_buf, **kwds)
+  File "/mnt/beegfs/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/env/lib/python3.7/site-packages/pandas/io/parsers.py", line 895, in __init__
+    self._make_engine(self.engine)
+  File "/mnt/beegfs/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/env/lib/python3.7/site-packages/pandas/io/parsers.py", line 1135, in _make_engine
+    self._engine = CParserWrapper(self.f, **self.options)
+  File "/mnt/beegfs/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/env/lib/python3.7/site-packages/pandas/io/parsers.py", line 1948, in __init__
+    _validate_usecols_names(usecols, self.orig_names)
+  File "/mnt/beegfs/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/env/lib/python3.7/site-packages/pandas/io/parsers.py", line 1255, in _validate_usecols_names
+    "columns expected but not found: {missing}".format(missing=missing)
+ValueError: Usecols do not match columns, columns expected but not found: ['line_srvc_cnt', 'nppes_provider_gender', 'hcpcs_code', 'year', 'exclusion', 'provider_type', 'average_medicare_payment_amt', 'npi', 'bene_day_srvc_cnt', 'bene_unique_cnt', 'nppes_provider_state', 'average_submitted_chrg_amt']
+srun: error: node090: task 0: Exited with exit code 1

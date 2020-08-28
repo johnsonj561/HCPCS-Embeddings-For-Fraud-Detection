@@ -17,7 +17,7 @@ sys.path.append(proj_dir)
 from utils.utils import model_summary_to_string, args_to_dict, write_dnn_perf_metrics
 from utils.logging import Logger
 from utils.keras_callbacks import KerasRocAucCallback
-from utils.data import load_data, get_embedded_data
+from utils.data import load_data, load_sampled_data, get_embedded_data
 from utils.mlp import create_model
 
 
@@ -99,7 +99,7 @@ for run in range(runs):
     # Load Data
     ############################################
 
-    data = load_data(sample_size)
+    data = load_sampled_data(sample_size)
 
     # drop columns, onehot encode, or lookkup embeddings
     x, y = get_embedded_data(data, embedding_type, embedding_path, drop_columns)

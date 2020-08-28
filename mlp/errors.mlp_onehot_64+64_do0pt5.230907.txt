@@ -1,0 +1,147 @@
+2020-08-27 20:18:38.234714: W tensorflow/stream_executor/platform/default/dso_loader.cc:59] Could not load dynamic library 'libcudart.so.10.1'; dlerror: libcudart.so.10.1: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/ohpc/pub/mpi/openmpi3-gnu8/3.1.4/lib:/opt/ohpc/pub/compiler/gcc/8.3.0/lib64:/cm/local/apps/cuda-driver/libs/390.46/lib64/
+2020-08-27 20:18:38.234933: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+2020-08-27 20:25:36.109279: I tensorflow/core/profiler/lib/profiler_session.cc:164] Profiler session started.
+2020-08-27 20:25:36.193194: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcuda.so.1
+2020-08-27 20:25:36.552461: E tensorflow/stream_executor/cuda/cuda_driver.cc:314] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2020-08-27 20:25:36.552554: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:156] kernel driver does not appear to be running on this host (node029.hpc.fau.edu): /proc/driver/nvidia/version does not exist
+2020-08-27 20:25:36.576221: I tensorflow/core/platform/profile_utils/cpu_utils.cc:104] CPU Frequency: 2799930000 Hz
+2020-08-27 20:25:36.576544: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x55f52e6c0d40 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2020-08-27 20:25:36.576570: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/utils/data.py:87: FutureWarning: DataFrame.to_sparse is deprecated and will be removed in a future version
+  df = df.to_sparse().to_coo().astype('float32')
+/mnt/beegfs/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/env/lib/python3.7/site-packages/pandas/core/frame.py:3451: FutureWarning: SparseSeries is deprecated and will be removed in a future version.
+Use a Series with sparse values instead.
+
+    >>> series = pd.Series(pd.SparseArray(...))
+
+See http://pandas.pydata.org/pandas-docs/stable/user_guide/sparse.html#migrating for more.
+
+  return klass(values, index=self.index, name=items, fastpath=True)
+WARNING:tensorflow:Keras is training/fitting/evaluating on array-like data. Keras may not be optimized for this format, so if your input data format is supported by TensorFlow I/O (https://github.com/tensorflow/io) we recommend using that to load a Dataset instead.
+2020-08-27 20:25:40.331404: W tensorflow/core/framework/op_kernel.cc:1755] Invalid argument: TypeError: 'SparseTensor' object is not subscriptable
+Traceback (most recent call last):
+
+  File "/mnt/beegfs/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/env/lib/python3.7/site-packages/tensorflow/python/ops/script_ops.py", line 242, in __call__
+    return func(device, token, args)
+
+  File "/mnt/beegfs/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/env/lib/python3.7/site-packages/tensorflow/python/ops/script_ops.py", line 131, in __call__
+    ret = self._func(*args)
+
+  File "/mnt/beegfs/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/env/lib/python3.7/site-packages/tensorflow/python/autograph/impl/api.py", line 302, in wrapper
+    return func(*args, **kwargs)
+
+  File "/mnt/beegfs/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/env/lib/python3.7/site-packages/tensorflow/python/keras/engine/data_adapter.py", line 513, in py_method
+    return [slice_array(inp) for inp in flat_inputs]
+
+  File "/mnt/beegfs/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/env/lib/python3.7/site-packages/tensorflow/python/keras/engine/data_adapter.py", line 513, in <listcomp>
+    return [slice_array(inp) for inp in flat_inputs]
+
+  File "/mnt/beegfs/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/env/lib/python3.7/site-packages/tensorflow/python/keras/engine/data_adapter.py", line 512, in slice_array
+    contiguous=contiguous)
+
+  File "/mnt/beegfs/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/env/lib/python3.7/site-packages/tensorflow/python/keras/engine/training_utils.py", line 392, in slice_arrays
+    entries = [[x[i:i + 1] for i in indices] for x in arrays]
+
+  File "/mnt/beegfs/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/env/lib/python3.7/site-packages/tensorflow/python/keras/engine/training_utils.py", line 392, in <listcomp>
+    entries = [[x[i:i + 1] for i in indices] for x in arrays]
+
+  File "/mnt/beegfs/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/env/lib/python3.7/site-packages/tensorflow/python/keras/engine/training_utils.py", line 392, in <listcomp>
+    entries = [[x[i:i + 1] for i in indices] for x in arrays]
+
+TypeError: 'SparseTensor' object is not subscriptable
+
+
+2020-08-27 20:25:40.335890: W tensorflow/core/framework/op_kernel.cc:1755] Invalid argument: TypeError: 'SparseTensor' object is not subscriptable
+Traceback (most recent call last):
+
+  File "/mnt/beegfs/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/env/lib/python3.7/site-packages/tensorflow/python/ops/script_ops.py", line 242, in __call__
+    return func(device, token, args)
+
+  File "/mnt/beegfs/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/env/lib/python3.7/site-packages/tensorflow/python/ops/script_ops.py", line 131, in __call__
+    ret = self._func(*args)
+
+  File "/mnt/beegfs/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/env/lib/python3.7/site-packages/tensorflow/python/autograph/impl/api.py", line 302, in wrapper
+    return func(*args, **kwargs)
+
+  File "/mnt/beegfs/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/env/lib/python3.7/site-packages/tensorflow/python/keras/engine/data_adapter.py", line 513, in py_method
+    return [slice_array(inp) for inp in flat_inputs]
+
+  File "/mnt/beegfs/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/env/lib/python3.7/site-packages/tensorflow/python/keras/engine/data_adapter.py", line 513, in <listcomp>
+    return [slice_array(inp) for inp in flat_inputs]
+
+  File "/mnt/beegfs/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/env/lib/python3.7/site-packages/tensorflow/python/keras/engine/data_adapter.py", line 512, in slice_array
+    contiguous=contiguous)
+
+  File "/mnt/beegfs/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/env/lib/python3.7/site-packages/tensorflow/python/keras/engine/training_utils.py", line 392, in slice_arrays
+    entries = [[x[i:i + 1] for i in indices] for x in arrays]
+
+  File "/mnt/beegfs/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/env/lib/python3.7/site-packages/tensorflow/python/keras/engine/training_utils.py", line 392, in <listcomp>
+    entries = [[x[i:i + 1] for i in indices] for x in arrays]
+
+  File "/mnt/beegfs/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/env/lib/python3.7/site-packages/tensorflow/python/keras/engine/training_utils.py", line 392, in <listcomp>
+    entries = [[x[i:i + 1] for i in indices] for x in arrays]
+
+TypeError: 'SparseTensor' object is not subscriptable
+
+
+Traceback (most recent call last):
+  File "main.py", line 146, in <module>
+    history = model.fit(x_train, y_train, epochs=epochs, callbacks=callbacks, verbose=1)
+  File "/mnt/beegfs/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/env/lib/python3.7/site-packages/tensorflow/python/keras/engine/training.py", line 108, in _method_wrapper
+    return method(self, *args, **kwargs)
+  File "/mnt/beegfs/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/env/lib/python3.7/site-packages/tensorflow/python/keras/engine/training.py", line 1098, in fit
+    tmp_logs = train_function(iterator)
+  File "/mnt/beegfs/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/env/lib/python3.7/site-packages/tensorflow/python/eager/def_function.py", line 780, in __call__
+    result = self._call(*args, **kwds)
+  File "/mnt/beegfs/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/env/lib/python3.7/site-packages/tensorflow/python/eager/def_function.py", line 840, in _call
+    return self._stateless_fn(*args, **kwds)
+  File "/mnt/beegfs/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/env/lib/python3.7/site-packages/tensorflow/python/eager/function.py", line 2829, in __call__
+    return graph_function._filtered_call(args, kwargs)  # pylint: disable=protected-access
+  File "/mnt/beegfs/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/env/lib/python3.7/site-packages/tensorflow/python/eager/function.py", line 1848, in _filtered_call
+    cancellation_manager=cancellation_manager)
+  File "/mnt/beegfs/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/env/lib/python3.7/site-packages/tensorflow/python/eager/function.py", line 1924, in _call_flat
+    ctx, args, cancellation_manager=cancellation_manager))
+  File "/mnt/beegfs/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/env/lib/python3.7/site-packages/tensorflow/python/eager/function.py", line 550, in call
+    ctx=ctx)
+  File "/mnt/beegfs/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/env/lib/python3.7/site-packages/tensorflow/python/eager/execute.py", line 60, in quick_execute
+    inputs, attrs, num_outputs)
+tensorflow.python.framework.errors_impl.InvalidArgumentError:  TypeError: 'SparseTensor' object is not subscriptable
+Traceback (most recent call last):
+
+  File "/mnt/beegfs/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/env/lib/python3.7/site-packages/tensorflow/python/ops/script_ops.py", line 242, in __call__
+    return func(device, token, args)
+
+  File "/mnt/beegfs/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/env/lib/python3.7/site-packages/tensorflow/python/ops/script_ops.py", line 131, in __call__
+    ret = self._func(*args)
+
+  File "/mnt/beegfs/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/env/lib/python3.7/site-packages/tensorflow/python/autograph/impl/api.py", line 302, in wrapper
+    return func(*args, **kwargs)
+
+  File "/mnt/beegfs/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/env/lib/python3.7/site-packages/tensorflow/python/keras/engine/data_adapter.py", line 513, in py_method
+    return [slice_array(inp) for inp in flat_inputs]
+
+  File "/mnt/beegfs/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/env/lib/python3.7/site-packages/tensorflow/python/keras/engine/data_adapter.py", line 513, in <listcomp>
+    return [slice_array(inp) for inp in flat_inputs]
+
+  File "/mnt/beegfs/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/env/lib/python3.7/site-packages/tensorflow/python/keras/engine/data_adapter.py", line 512, in slice_array
+    contiguous=contiguous)
+
+  File "/mnt/beegfs/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/env/lib/python3.7/site-packages/tensorflow/python/keras/engine/training_utils.py", line 392, in slice_arrays
+    entries = [[x[i:i + 1] for i in indices] for x in arrays]
+
+  File "/mnt/beegfs/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/env/lib/python3.7/site-packages/tensorflow/python/keras/engine/training_utils.py", line 392, in <listcomp>
+    entries = [[x[i:i + 1] for i in indices] for x in arrays]
+
+  File "/mnt/beegfs/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/env/lib/python3.7/site-packages/tensorflow/python/keras/engine/training_utils.py", line 392, in <listcomp>
+    entries = [[x[i:i + 1] for i in indices] for x in arrays]
+
+TypeError: 'SparseTensor' object is not subscriptable
+
+
+	 [[{{node EagerPyFunc}}]]
+	 [[IteratorGetNext]] [Op:__inference_train_function_1442]
+
+Function call stack:
+train_function
+
+srun: error: node029: task 0: Exited with exit code 1

@@ -55,7 +55,7 @@ def load_data(sample_size=None):
     if sample_size != None:
         df = df.sample(n=sample_size)
     df.reset_index(inplace=True)
-    return 
+    return df 
 
 
 def load_sampled_data(sample_size):
@@ -97,7 +97,7 @@ def safe_embedding(embeddings, key):
 
 def get_embedded_data(df, embedding_type, embedding_path, drop_columns):
     y = df['exclusion']
-    drop_columns = ['index', 'npi', 'year', 'exclusion', *drop_columns]
+    drop_columns = ['npi', 'year', 'exclusion', *drop_columns]
     df = df.drop(columns=drop_columns)
     print(f'Using columns {df.columns}')
     if 'onehot' in embedding_type:

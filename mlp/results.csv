@@ -1,3 +1,0 @@
-key,depth,width,tp,fp,tn,fn,tpr,tnr,roc_auc,geometric_mean,precision
-embedding:skipgram150-layers:64+64-learn_rate:0.001-batch_size:128-dropout_rate:0.5-bathcnorm:True,482,287499,711836,183,0.724812,0.71231,0.79027,0.718534,0.001674
-embedding:skipgram150-layers:64+64-learn_rate:0.001-batch_size:128-dropout_rate:0.5-bathcnorm:True,568,401372,597950,110,0.837758,0.598356,0.800085,0.708009,0.001413

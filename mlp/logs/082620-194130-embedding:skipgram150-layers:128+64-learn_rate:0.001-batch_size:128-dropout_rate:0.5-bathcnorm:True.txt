@@ -1,3 +1,0 @@
-0 min, 0 sec: Starting job
-0 min, 0 sec: Using ts: {ts}
-0 min, 0 sec: Outputs being written to ['validation-auc-results.csv', 'train-auc-results.csv']

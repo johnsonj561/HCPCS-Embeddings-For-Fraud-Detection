@@ -141,7 +141,7 @@ for run in range(runs):
     K.clear_session()
     input_dim = x_train.shape[1]
     model = create_model(input_dim, config)
-
+    y_train = np.array(y_train)
     logger.log_time('Starting training...').write_to_file()
 
     if 'onehot' in embedding_type:

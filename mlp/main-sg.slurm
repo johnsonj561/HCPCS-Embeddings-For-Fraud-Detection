@@ -1,12 +1,11 @@
 #!/bin/bash
 
-#SBATCH -J mlp_onehot_128+64_do0pt5
+#SBATCH -J mlp_skipgram150_128+64_do0pt5
 #SBATCH -A jjohn273
-#SBATCH -e errors.mlp_onehot_128+64_do0pt5.%j.txt
-#SBATCH -o output.mlp_onehot_128+64_do0pt5.%j.txt
+#SBATCH -e errors.mlp_skipgram150_128+64_do0pt5.%j.txt
+#SBATCH -o output.mlp_skipgram150_128+64_do0pt5.%j.txt
 #SBATCH -p longq7
 #SBATCH --mem-per-cpu=110000
-#SBATCH --exclusive
 
 source $CMS_ROOT/env/bin/activate
 
@@ -18,9 +17,9 @@ srun python3 main.py \
   runs=5 \
   epochs=100 \
   drop_columns=state_code \
-  embedding_type=onehot \
+  embedding_type=skipgram150 \
   hidden_layers=128+64 \
   batchnorm=true \
   epochs=100 \
-  dropout_rate=0.5
-  # embedding_path=/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/data/skipgram-e150-w5-i100.kv
+  dropout_rate=0.5 \
+  embedding_path=/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/data/skipgram-e150-w5-i100.kv

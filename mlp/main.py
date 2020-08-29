@@ -18,7 +18,7 @@ from utils.utils import model_summary_to_string, args_to_dict, write_dnn_perf_me
 from utils.logging import Logger
 from utils.keras_callbacks import KerasRocAucCallback
 from utils.data import load_data, load_sampled_data, get_embedded_data
-from utils.mlp import create_model
+from utils.mlp import create_model, SparseDataGenerator
 
 
 
@@ -143,11 +143,23 @@ for run in range(runs):
     model = create_model(input_dim, config)
 
     logger.log_time('Starting training...').write_to_file()
-    history = model.fit(x_train, y_train, epochs=epochs, callbacks=callbacks, verbose=1)
+
+    if 'onehot' in embedding_type:
+        training_generator = SparseDataGenerator(x_train, y_train, batch_size=batch_size)
+        validation_generator = SparseDataGenerator(x_test, y_test, batch_size=batch_size)
+        history = model.fit_generator(
+            epochs=epochs, generator=training_generator,
+            validation_data=validation_generator,
+            use_multiprocessing=True,
+            callbacks=callbacks,
+            workers=1)
+    else:
+        history = model.fit(x_train, y_train, epochs=epochs, callbacks=callbacks, verbose=1)
+
     logger.log_time('Trainin complete!').write_to_file()
 
-
-
+    
+    
     ############################################
     # Write Results
     ############################################

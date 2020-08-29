@@ -1,3 +1,4 @@
+import numpy as np
 import tensorflow as tf
 Keras = tf.keras
 Sequential = Keras.models.Sequential
@@ -46,3 +47,22 @@ def write_model(model, path):
     json = model.to_json()
     with open(path, 'w') as out:
         out.write(json)
+        
+
+class SparseDataGenerator(tf.keras.utils.Sequence):
+    def __init__(self, x, y, batch_size=32):
+        'Initialization'
+        self.x = x
+        self.y = y
+        self.batch_size = batch_size
+
+    def __len__(self):
+        'Denotes the number of batches per epoch'
+        return int(np.floor(self.x.shape[0] / self.batch_size))
+
+    def __getitem__(self, index):
+        'Generate one batch of data'
+        # Generate indexes of the batch
+        start = index*self.batch_size
+        end = min(start + self.batch_size, self.x.shape[0] - 1)
+        return self.x[start:end].todense(), self.y[start:end]

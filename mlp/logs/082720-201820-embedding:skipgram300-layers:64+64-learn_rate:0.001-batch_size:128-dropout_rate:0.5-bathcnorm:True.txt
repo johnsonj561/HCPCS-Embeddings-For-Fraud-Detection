@@ -1,6 +1,0 @@
-0 min, 0 sec: Starting run 0
-0 min, 0 sec: Using ts: {ts}
-0 min, 0 sec: Outputs being written to ['validation-auc-results.csv', 'train-auc-results.csv']
-8 min, 10 sec: Loaded embedded data with shape (5000000, 406)
-9 min, 21 sec: Starting training...
-14 min, 26 sec: Epoch: 0  val_auc: 0.8131680301960773

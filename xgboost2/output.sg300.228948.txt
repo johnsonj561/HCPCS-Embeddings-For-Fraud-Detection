@@ -1,6 +1,0 @@
-Running job with arguments
-{'runs': '3', 'n_jobs': '4', 'sample_size': '5000000', 'max_depth': '4', 'drop_columns': 'state_code', 'embedding_type': 'skipgram300', 'embedding_path': '/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/data/skipgram-e300-w5-i100.kv'}
-n_estimators: 100
-max_depth: 4
-Starting run 0
-Loading data from path /home/groups/fau-bigdata-datasets/medicare/non-aggregated/Medicare_PUF_2012to2015_combined_subset_with_names-20200302-LEIE.csv.gz

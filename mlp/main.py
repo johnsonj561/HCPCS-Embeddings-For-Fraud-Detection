@@ -145,16 +145,18 @@ for run in range(runs):
     logger.log_time('Starting training...').write_to_file()
 
     if 'onehot' in embedding_type:
-        training_generator = SparseDataGenerator(x_train, y_train, batch_size=batch_size)
-        validation_generator = SparseDataGenerator(x_test, y_test, batch_size=batch_size)
+        print('Using SparseDataGenerator')
+        training_generator = SparseDataGenerator(x_train, y_train, batch_size=config['batch_size'])
+        validation_generator = SparseDataGenerator(x_test, y_test, batch_size=config['batch_size'])
         history = model.fit_generator(
             epochs=epochs, generator=training_generator,
             validation_data=validation_generator,
             use_multiprocessing=True,
             callbacks=callbacks,
-            workers=1)
+            verbose=0,
+            workers=2)
     else:
-        history = model.fit(x_train, y_train, epochs=epochs, callbacks=callbacks, verbose=1)
+        history = model.fit(x_train, y_train, epochs=epochs, callbacks=callbacks, verbose=0)
 
     logger.log_time('Trainin complete!').write_to_file()
 

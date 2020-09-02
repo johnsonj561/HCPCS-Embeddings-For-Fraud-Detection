@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "main.py", line 83, in <module>
+    model.fit(train_x, train_y)
+  File "/mnt/beegfs/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/env/lib/python3.7/site-packages/xgboost/sklearn.py", line 826, in fit
+    missing=self.missing, nthread=self.n_jobs)
+  File "/mnt/beegfs/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/env/lib/python3.7/site-packages/xgboost/core.py", line 438, in __init__
+    feature_types=feature_types)
+  File "/mnt/beegfs/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/env/lib/python3.7/site-packages/xgboost/data.py", line 504, in dispatch_data_backend
+    feature_names, feature_types)
+  File "/mnt/beegfs/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/env/lib/python3.7/site-packages/xgboost/data.py", line 219, in _from_pandas_df
+    data, feature_names, feature_types)
+  File "/mnt/beegfs/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/env/lib/python3.7/site-packages/xgboost/data.py", line 185, in _transform_pandas_df
+    raise ValueError(msg + ', '.join(bad_fields))
+ValueError: DataFrame.dtypes for data must be int, float or bool.
+                Did not expect the data types in fields gender, provider_type, hcpcs_code
+srun: error: node014: task 0: Exited with exit code 1

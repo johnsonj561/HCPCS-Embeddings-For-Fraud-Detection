@@ -1,0 +1,17 @@
+Traceback (most recent call last):
+  File "main.py", line 55, in <module>
+    embedding_path, drop_columns)
+  File "/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/utils/data.py", line 111, in get_embedded_data
+    for x in df['hcpcs_code'].values])
+  File "/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/utils/data.py", line 111, in <listcomp>
+    for x in df['hcpcs_code'].values])
+  File "/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/utils/data.py", line 93, in safe_embedding
+    return embeddings[key].astype('float32')
+  File "/mnt/beegfs/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/env/lib/python3.7/site-packages/gensim/models/keyedvectors.py", line 353, in __getitem__
+    return self.get_vector(entities)
+  File "/mnt/beegfs/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/env/lib/python3.7/site-packages/gensim/models/keyedvectors.py", line 471, in get_vector
+    return self.word_vec(word)
+  File "/mnt/beegfs/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/env/lib/python3.7/site-packages/gensim/models/keyedvectors.py", line 463, in word_vec
+    result = self.vectors[self.vocab[word].index]
+IndexError: only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+srun: error: node019: task 0: Exited with exit code 1

@@ -1,0 +1,17 @@
+Traceback (most recent call last):
+  File "main.py", line 83, in <module>
+    model.fit(train_x, train_y)
+  File "/home/jjohn273/.local/lib/python3.6/site-packages/xgboost/sklearn.py", line 826, in fit
+    missing=self.missing, nthread=self.n_jobs)
+  File "/home/jjohn273/.local/lib/python3.6/site-packages/xgboost/core.py", line 438, in __init__
+    feature_types=feature_types)
+  File "/home/jjohn273/.local/lib/python3.6/site-packages/xgboost/data.py", line 504, in dispatch_data_backend
+    feature_names, feature_types)
+  File "/home/jjohn273/.local/lib/python3.6/site-packages/xgboost/data.py", line 221, in _from_pandas_df
+    feature_types)
+  File "/home/jjohn273/.local/lib/python3.6/site-packages/xgboost/data.py", line 135, in _from_numpy_array
+    flatten = _transform_np_array(data)
+  File "/home/jjohn273/.local/lib/python3.6/site-packages/xgboost/data.py", line 116, in _transform_np_array
+    dtype=np.float32)
+MemoryError: Unable to allocate 4.84 GiB for an array with shape (1299200000,) and data type float32
+srun: error: node006: task 0: Exited with exit code 1

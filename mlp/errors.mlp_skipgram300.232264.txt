@@ -1,0 +1,8 @@
+2020-08-31 05:27:47.385487: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2800095000 Hz
+2020-08-31 05:27:47.385816: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x5611abe2f1c0 executing computations on platform Host. Devices:
+2020-08-31 05:27:47.385863: I tensorflow/compiler/xla/service/service.cc:175]   StreamExecutor device (0): Host, Default Version
+2020-08-31 05:28:04.862480: I tensorflow/core/profiler/lib/profiler_session.cc:184] Profiler session started.
+2020-08-31 09:04:26.626055: I tensorflow/core/profiler/lib/profiler_session.cc:184] Profiler session started.
+2020-08-31 11:19:32.569217: I tensorflow/core/profiler/lib/profiler_session.cc:184] Profiler session started.
+2020-08-31 14:31:39.183158: I tensorflow/core/profiler/lib/profiler_session.cc:184] Profiler session started.
+2020-08-31 17:21:44.603936: I tensorflow/core/profiler/lib/profiler_session.cc:184] Profiler session started.

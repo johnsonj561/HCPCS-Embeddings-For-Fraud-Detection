@@ -1,0 +1,56 @@
+Loading data from path /home/groups/fau-bigdata-datasets/medicare/non-aggregated/Medicare_PUF_PartB_2012to2017.csv.gz
+Loaded data with shape: (56818165, 12)
+Dropped nan, updated shape: (56818165, 12)
+Positive sample count: 36548 0.9137%
+Negative sample count: 3963452 99.08630000000001%
+Using columns Index(['gender', 'provider_type', 'hcpcs_code', 'line_srvc_cnt',
+       'bene_unique_cnt', 'bene_day_srvc_cnt', 'average_submitted_chrg_amt',
+       'average_medicare_payment_amt'],
+      dtype='object')
+Using skipgram150_w5 embedding
+Embedded data shape: (4000000, 256)
+Loading data from path /home/groups/fau-bigdata-datasets/medicare/non-aggregated/Medicare_PUF_PartB_2012to2017.csv.gz
+Loaded data with shape: (56818165, 12)
+Dropped nan, updated shape: (56818165, 12)
+Positive sample count: 36548 0.9137%
+Negative sample count: 3963452 99.08630000000001%
+Using columns Index(['gender', 'provider_type', 'hcpcs_code', 'line_srvc_cnt',
+       'bene_unique_cnt', 'bene_day_srvc_cnt', 'average_submitted_chrg_amt',
+       'average_medicare_payment_amt'],
+      dtype='object')
+Using skipgram150_w5 embedding
+Embedded data shape: (4000000, 256)
+Loading data from path /home/groups/fau-bigdata-datasets/medicare/non-aggregated/Medicare_PUF_PartB_2012to2017.csv.gz
+Loaded data with shape: (56818165, 12)
+Dropped nan, updated shape: (56818165, 12)
+Positive sample count: 36548 0.9137%
+Negative sample count: 3963452 99.08630000000001%
+Using columns Index(['gender', 'provider_type', 'hcpcs_code', 'line_srvc_cnt',
+       'bene_unique_cnt', 'bene_day_srvc_cnt', 'average_submitted_chrg_amt',
+       'average_medicare_payment_amt'],
+      dtype='object')
+Using skipgram150_w5 embedding
+Embedded data shape: (4000000, 256)
+Loading data from path /home/groups/fau-bigdata-datasets/medicare/non-aggregated/Medicare_PUF_PartB_2012to2017.csv.gz
+Loaded data with shape: (56818165, 12)
+Dropped nan, updated shape: (56818165, 12)
+Positive sample count: 36548 0.9137%
+Negative sample count: 3963452 99.08630000000001%
+Using columns Index(['gender', 'provider_type', 'hcpcs_code', 'line_srvc_cnt',
+       'bene_unique_cnt', 'bene_day_srvc_cnt', 'average_submitted_chrg_amt',
+       'average_medicare_payment_amt'],
+      dtype='object')
+Using skipgram150_w5 embedding
+Embedded data shape: (4000000, 256)
+Loading data from path /home/groups/fau-bigdata-datasets/medicare/non-aggregated/Medicare_PUF_PartB_2012to2017.csv.gz
+Loaded data with shape: (56818165, 12)
+Dropped nan, updated shape: (56818165, 12)
+Positive sample count: 36548 0.9137%
+Negative sample count: 3963452 99.08630000000001%
+Using columns Index(['gender', 'provider_type', 'hcpcs_code', 'line_srvc_cnt',
+       'bene_unique_cnt', 'bene_day_srvc_cnt', 'average_submitted_chrg_amt',
+       'average_medicare_payment_amt'],
+      dtype='object')
+Using skipgram150_w5 embedding
+Embedded data shape: (4000000, 256)
+Job complete

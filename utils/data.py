@@ -104,7 +104,7 @@ def get_embedded_data(df, embedding_type, embedding_path, drop_columns):
         print('Using onehot embedding')
         df = pd.get_dummies(df, sparse=True)
         df = df_to_csr(df)
-    if 'skipgram' in embedding_type or 'cbow' in embedding_type:
+    if 'skipgram' in embedding_type or 'cbow' in embedding_type or 'choi' in embedding_type:
         print(f'Using {embedding_type} embedding')
         embeddings = KeyedVectors.load(embedding_path)
         embeddings = np.array([safe_embedding(embeddings, x)

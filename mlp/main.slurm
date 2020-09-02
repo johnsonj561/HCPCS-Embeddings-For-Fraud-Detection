@@ -4,7 +4,7 @@
 #SBATCH -A jjohn273
 #SBATCH -e errors.mlp_onehot_128+64_do0pt5.%j.txt
 #SBATCH -o output.mlp_onehot_128+64_do0pt5.%j.txt
-#SBATCH -p longq7
+#SBATCH -p longq-bigdata7
 #SBATCH --mem-per-cpu=110000
 #SBATCH --exclusive
 

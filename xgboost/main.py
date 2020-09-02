@@ -7,8 +7,7 @@ import os
 proj_dir = os.environ['CMS_ROOT']
 sys.path.append(proj_dir)
 from utils.utils import args_to_dict, write_perf_metrics, Timer
-from utils.utils import get_best_threshold, get_imbalance_description
-from utils.data import load_data, get_embedded_data
+from utils.data import load_sampled_data, get_embedded_data
 
 # parse arguments
 filename = sys.argv[0].replace('.py', '')
@@ -48,7 +47,7 @@ for run in range(runs):
     print(f'Starting run {run}')
 
     # load data
-    data = load_data(sample_size)
+    data = load_sampled_data(sample_size)
     print(f'Loaded data with shape {data.shape}')
 
     # drop columns, onehot encode, or lookkup embeddings

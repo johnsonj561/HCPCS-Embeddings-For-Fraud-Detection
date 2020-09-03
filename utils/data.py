@@ -55,7 +55,7 @@ def load_data(sample_size=None):
     if sample_size != None:
         df = df.sample(n=sample_size)
     df.reset_index(inplace=True)
-    return df 
+    return df
 
 
 def load_sampled_data(sample_size):
@@ -75,7 +75,7 @@ def load_sampled_data(sample_size):
     return pd.concat([pos_samples, neg_samples], axis=0) \
         .sample(frac=1) \
         .reset_index(drop=True)
-    
+
 
 
 def get_minority_size(df):
@@ -106,9 +106,14 @@ def get_embedded_data(df, embedding_type, embedding_path, drop_columns):
         df = df_to_csr(df)
     if 'skipgram' in embedding_type or 'cbow' in embedding_type or 'choi' in embedding_type:
         print(f'Using {embedding_type} embedding')
-        embeddings = KeyedVectors.load(embedding_path)
+        if 'choi' in embedding_type:
+          with open(embedding_path, 'rb') as fin:
+            embeddings = pickle.load(fin)
+        else:
+          embeddings = KeyedVectors.load(embedding_path)
+
         embeddings = np.array([safe_embedding(embeddings, x)
-                               for x in df['hcpcs_code'].values])
+                                for x in df['hcpcs_code'].values])
         df.drop(columns=['hcpcs_code'], inplace=True)
         for col in range(embeddings.shape[1]):
             df[f'hcpcs_{col}'] = embeddings[:, col]

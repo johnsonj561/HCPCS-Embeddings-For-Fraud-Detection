@@ -21,3 +21,6 @@ embedding:onehot-layers:64+64-learn_rate:0.001-batch_size:128-dropout_rate:0.5-b
 embedding:onehot-layers:64+64-learn_rate:0.001-batch_size:128-dropout_rate:0.5-bathcnorm:True,6065,271436,521243,1256,0.828439,0.657571,0.826285,0.738077,0.021856
 embedding:onehot-layers:64+64-learn_rate:0.001-batch_size:128-dropout_rate:0.5-bathcnorm:True,5823,252158,540564,1455,0.800082,0.681909,0.820921,0.738636,0.022571
 embedding:onehot-layers:64+64-learn_rate:0.001-batch_size:128-dropout_rate:0.5-bathcnorm:True,5626,228103,564593,1678,0.770263,0.712244,0.820953,0.740686,0.024071
+embedding:onehot-layers:64+64-learn_rate:0.001-batch_size:128-dropout_rate:0.5-bathcnorm:True,5601,236698,556094,1607,0.777053,0.701437,0.817839,0.738278,0.023116
+embedding:onehot-layers:64+64-learn_rate:0.001-batch_size:128-dropout_rate:0.5-bathcnorm:True,5861,238686,553876,1577,0.787981,0.698842,0.824291,0.742074,0.023967
+embedding:onehot-layers:64+64-learn_rate:0.001-batch_size:128-dropout_rate:0.5-bathcnorm:True,5975,263279,529426,1320,0.819054,0.667873,0.823349,0.739611,0.022191

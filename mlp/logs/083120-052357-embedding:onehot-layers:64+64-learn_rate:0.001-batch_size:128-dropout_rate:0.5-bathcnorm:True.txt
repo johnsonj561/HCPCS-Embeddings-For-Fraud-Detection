@@ -118,3 +118,36 @@
 570 min, 37 sec: Epoch: 18  val_auc: 0.8245837999145265
 600 min, 2 sec: Epoch: 19  val_auc: 0.8251881340920203
 629 min, 56 sec: Epoch: 20  val_auc: 0.8246356034861716
+659 min, 21 sec: Epoch: 21  val_auc: 0.8244147820810611
+689 min, 8 sec: Epoch: 22  val_auc: 0.8240826995178856
+719 min, 27 sec: Epoch: 23  val_auc: 0.8237510913336538
+749 min, 39 sec: Epoch: 24  val_auc: 0.8238551048330172
+779 min, 8 sec: Epoch: 25  val_auc: 0.8242367566455575
+808 min, 58 sec: Epoch: 26  val_auc: 0.8241237376645689
+838 min, 43 sec: Epoch: 27  val_auc: 0.8242364318830013
+868 min, 40 sec: Epoch: 28  val_auc: 0.8242911376224127
+872 min, 47 sec: Trainin complete!
+0 min, 0 sec: Starting run 4
+0 min, 0 sec: Using ts: {ts}
+0 min, 0 sec: Outputs being written to ['validation-auc-results.csv', 'train-auc-results.csv']
+4 min, 30 sec: Loaded embedded data with shape (4000000, 7633)
+4 min, 32 sec: Starting training...
+30 min, 12 sec: Epoch: 0  val_auc: 0.8165001321876514
+59 min, 58 sec: Epoch: 1  val_auc: 0.8203661421341859
+90 min, 13 sec: Epoch: 2  val_auc: 0.8210875951989189
+120 min, 1 sec: Epoch: 3  val_auc: 0.8208160529316768
+150 min, 11 sec: Epoch: 4  val_auc: 0.8217938646573539
+180 min, 24 sec: Epoch: 5  val_auc: 0.8224304267617788
+210 min, 45 sec: Epoch: 6  val_auc: 0.8225560707645265
+241 min, 2 sec: Epoch: 7  val_auc: 0.8228657545288564
+271 min, 20 sec: Epoch: 8  val_auc: 0.8227239136533564
+301 min, 38 sec: Epoch: 9  val_auc: 0.8229895739775708
+331 min, 27 sec: Epoch: 10  val_auc: 0.8224713702834403
+361 min, 22 sec: Epoch: 11  val_auc: 0.8230239745422921
+391 min, 29 sec: Epoch: 12  val_auc: 0.8233632268553186
+421 min, 45 sec: Epoch: 13  val_auc: 0.8234341063093416
+452 min, 3 sec: Epoch: 14  val_auc: 0.8231655215281531
+482 min, 27 sec: Epoch: 15  val_auc: 0.8232809510718324
+512 min, 30 sec: Epoch: 16  val_auc: 0.8231873660276866
+542 min, 4 sec: Epoch: 17  val_auc: 0.8233491763539683
+546 min, 19 sec: Trainin complete!

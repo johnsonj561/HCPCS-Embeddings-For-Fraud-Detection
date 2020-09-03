@@ -1,0 +1,137 @@
+Running job with arguments
+{'runs': '3', 'n_jobs': '4', 'sample_size': '4000000', 'max_depth': '8', 'drop_columns': 'state_code', 'embedding_type': 'skipgram75_w10', 'embedding_path': '/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/data/skipgram-e75-w10-i100.kv'}
+n_estimators: 100
+max_depth: 8
+Starting run 0
+Loading data from path /home/groups/fau-bigdata-datasets/medicare/non-aggregated/Medicare_PUF_PartB_2012to2017.csv.gz
+Loaded data with shape: (56818165, 12)
+Dropped nan, updated shape: (56818165, 12)
+Positive sample count: 36548 0.9137%
+Negative sample count: 3963452 99.08630000000001%
+Loaded data with shape (4000000, 12)
+Using columns Index(['gender', 'provider_type', 'hcpcs_code', 'line_srvc_cnt',
+       'bene_unique_cnt', 'bene_day_srvc_cnt', 'average_submitted_chrg_amt',
+       'average_medicare_payment_amt'],
+      dtype='object')
+Using skipgram75_w10 embedding
+Embedded data shape: (4000000, 181)
+Encoded data shape: (4000000, 181)
+Starting fold 0
+Train shape: (3200000, 181)
+Test shape: (800000, 181)
+Minority size: 0.9137187499999999
+Threshold: 0.0091371875
+Training completed in 7506.546152114868
+Starting fold 1
+Train shape: (3200000, 181)
+Test shape: (800000, 181)
+Minority size: 0.9137187499999999
+Threshold: 0.0091371875
+Training completed in 7755.142590761185
+Starting fold 2
+Train shape: (3200000, 181)
+Test shape: (800000, 181)
+Minority size: 0.9136874999999999
+Threshold: 0.009136875
+Training completed in 7557.00848865509
+Starting fold 3
+Train shape: (3200000, 181)
+Test shape: (800000, 181)
+Minority size: 0.9136874999999999
+Threshold: 0.009136875
+Training completed in 7871.827011346817
+Starting fold 4
+Train shape: (3200000, 181)
+Test shape: (800000, 181)
+Minority size: 0.9136874999999999
+Threshold: 0.009136875
+Training completed in 8648.283631324768
+Starting run 1
+Loading data from path /home/groups/fau-bigdata-datasets/medicare/non-aggregated/Medicare_PUF_PartB_2012to2017.csv.gz
+Loaded data with shape: (56818165, 12)
+Dropped nan, updated shape: (56818165, 12)
+Positive sample count: 36548 0.9137%
+Negative sample count: 3963452 99.08630000000001%
+Loaded data with shape (4000000, 12)
+Using columns Index(['gender', 'provider_type', 'hcpcs_code', 'line_srvc_cnt',
+       'bene_unique_cnt', 'bene_day_srvc_cnt', 'average_submitted_chrg_amt',
+       'average_medicare_payment_amt'],
+      dtype='object')
+Using skipgram75_w10 embedding
+Embedded data shape: (4000000, 181)
+Encoded data shape: (4000000, 181)
+Starting fold 0
+Train shape: (3200000, 181)
+Test shape: (800000, 181)
+Minority size: 0.9137187499999999
+Threshold: 0.0091371875
+Training completed in 8867.245907306671
+Starting fold 1
+Train shape: (3200000, 181)
+Test shape: (800000, 181)
+Minority size: 0.9137187499999999
+Threshold: 0.0091371875
+Training completed in 8553.364188194275
+Starting fold 2
+Train shape: (3200000, 181)
+Test shape: (800000, 181)
+Minority size: 0.9136874999999999
+Threshold: 0.009136875
+Training completed in 8566.749877691269
+Starting fold 3
+Train shape: (3200000, 181)
+Test shape: (800000, 181)
+Minority size: 0.9136874999999999
+Threshold: 0.009136875
+Training completed in 8327.319304466248
+Starting fold 4
+Train shape: (3200000, 181)
+Test shape: (800000, 181)
+Minority size: 0.9136874999999999
+Threshold: 0.009136875
+Training completed in 8798.722106456757
+Starting run 2
+Loading data from path /home/groups/fau-bigdata-datasets/medicare/non-aggregated/Medicare_PUF_PartB_2012to2017.csv.gz
+Loaded data with shape: (56818165, 12)
+Dropped nan, updated shape: (56818165, 12)
+Positive sample count: 36548 0.9137%
+Negative sample count: 3963452 99.08630000000001%
+Loaded data with shape (4000000, 12)
+Using columns Index(['gender', 'provider_type', 'hcpcs_code', 'line_srvc_cnt',
+       'bene_unique_cnt', 'bene_day_srvc_cnt', 'average_submitted_chrg_amt',
+       'average_medicare_payment_amt'],
+      dtype='object')
+Using skipgram75_w10 embedding
+Embedded data shape: (4000000, 181)
+Encoded data shape: (4000000, 181)
+Starting fold 0
+Train shape: (3200000, 181)
+Test shape: (800000, 181)
+Minority size: 0.9137187499999999
+Threshold: 0.0091371875
+Training completed in 8664.224223613739
+Starting fold 1
+Train shape: (3200000, 181)
+Test shape: (800000, 181)
+Minority size: 0.9137187499999999
+Threshold: 0.0091371875
+Training completed in 8505.31525850296
+Starting fold 2
+Train shape: (3200000, 181)
+Test shape: (800000, 181)
+Minority size: 0.9136874999999999
+Threshold: 0.009136875
+Training completed in 8170.164608478546
+Starting fold 3
+Train shape: (3200000, 181)
+Test shape: (800000, 181)
+Minority size: 0.9136874999999999
+Threshold: 0.009136875
+Training completed in 8481.920939922333
+Starting fold 4
+Train shape: (3200000, 181)
+Test shape: (800000, 181)
+Minority size: 0.9136874999999999
+Threshold: 0.009136875
+Training completed in 8601.342803001404
+Job complete

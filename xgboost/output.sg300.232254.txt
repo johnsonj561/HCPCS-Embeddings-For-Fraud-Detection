@@ -1,0 +1,93 @@
+Running job with arguments
+{'runs': '2', 'n_jobs': '4', 'sample_size': '4000000', 'max_depth': '8', 'drop_columns': 'state_code', 'embedding_type': 'skipgram300_w5', 'embedding_path': '/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/data/skipgram-e300-w5-i100.kv'}
+n_estimators: 100
+max_depth: 8
+Starting run 0
+Loading data from path /home/groups/fau-bigdata-datasets/medicare/non-aggregated/Medicare_PUF_PartB_2012to2017.csv.gz
+Loaded data with shape: (56818165, 12)
+Dropped nan, updated shape: (56818165, 12)
+Positive sample count: 36548 0.9137%
+Negative sample count: 3963452 99.08630000000001%
+Loaded data with shape (4000000, 12)
+Using columns Index(['gender', 'provider_type', 'hcpcs_code', 'line_srvc_cnt',
+       'bene_unique_cnt', 'bene_day_srvc_cnt', 'average_submitted_chrg_amt',
+       'average_medicare_payment_amt'],
+      dtype='object')
+Using skipgram300_w5 embedding
+Embedded data shape: (4000000, 406)
+Encoded data shape: (4000000, 406)
+Starting fold 0
+Train shape: (3200000, 406)
+Test shape: (800000, 406)
+Minority size: 0.9137187499999999
+Threshold: 0.0091371875
+Training completed in 22774.42711353302
+Starting fold 1
+Train shape: (3200000, 406)
+Test shape: (800000, 406)
+Minority size: 0.9137187499999999
+Threshold: 0.0091371875
+Training completed in 25686.498348474503
+Starting fold 2
+Train shape: (3200000, 406)
+Test shape: (800000, 406)
+Minority size: 0.9136874999999999
+Threshold: 0.009136875
+Training completed in 23247.510401964188
+Starting fold 3
+Train shape: (3200000, 406)
+Test shape: (800000, 406)
+Minority size: 0.9136874999999999
+Threshold: 0.009136875
+Training completed in 20709.671038866043
+Starting fold 4
+Train shape: (3200000, 406)
+Test shape: (800000, 406)
+Minority size: 0.9136874999999999
+Threshold: 0.009136875
+Training completed in 20758.950756788254
+Starting run 1
+Loading data from path /home/groups/fau-bigdata-datasets/medicare/non-aggregated/Medicare_PUF_PartB_2012to2017.csv.gz
+Loaded data with shape: (56818165, 12)
+Dropped nan, updated shape: (56818165, 12)
+Positive sample count: 36548 0.9137%
+Negative sample count: 3963452 99.08630000000001%
+Loaded data with shape (4000000, 12)
+Using columns Index(['gender', 'provider_type', 'hcpcs_code', 'line_srvc_cnt',
+       'bene_unique_cnt', 'bene_day_srvc_cnt', 'average_submitted_chrg_amt',
+       'average_medicare_payment_amt'],
+      dtype='object')
+Using skipgram300_w5 embedding
+Embedded data shape: (4000000, 406)
+Encoded data shape: (4000000, 406)
+Starting fold 0
+Train shape: (3200000, 406)
+Test shape: (800000, 406)
+Minority size: 0.9137187499999999
+Threshold: 0.0091371875
+Training completed in 19591.79156446457
+Starting fold 1
+Train shape: (3200000, 406)
+Test shape: (800000, 406)
+Minority size: 0.9137187499999999
+Threshold: 0.0091371875
+Training completed in 15235.325803041458
+Starting fold 2
+Train shape: (3200000, 406)
+Test shape: (800000, 406)
+Minority size: 0.9136874999999999
+Threshold: 0.009136875
+Training completed in 15187.343107700348
+Starting fold 3
+Train shape: (3200000, 406)
+Test shape: (800000, 406)
+Minority size: 0.9136874999999999
+Threshold: 0.009136875
+Training completed in 15242.253396749496
+Starting fold 4
+Train shape: (3200000, 406)
+Test shape: (800000, 406)
+Minority size: 0.9136874999999999
+Threshold: 0.009136875
+Training completed in 15197.669718265533
+Job complete

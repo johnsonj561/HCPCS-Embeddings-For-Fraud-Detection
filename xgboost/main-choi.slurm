@@ -6,16 +6,16 @@
 #SBATCH -o output.choi300.%j.txt
 #SBATCH -p longq7
 #SBATCH --mem-per-cpu=100000
-#SBATCH -w node019
+#SBATCH -w node014
 
 source $CMS_ROOT/env/bin/activate
 
 srun python3 main.py \
-  runs=2 \
+  runs=1 \
   n_jobs=4 \
   sample_size=4000000 \
   max_depth=8 \
   drop_columns=state_code \
   embedding_type=choi300 \
-  embedding_path=/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/data/choi-mcemc-e300.kv
+  embedding_path=/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/data/choi-mcemc-e300.pickle
 

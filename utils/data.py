@@ -88,11 +88,12 @@ def df_to_csr(df):
     return df.tocsr()
 
 
-def safe_embedding(embeddings, key):
+def safe_embedding(embeddings, key, embedding_type):
     try:
-        return embeddings[key].astype('float32')
+        return np.array(embeddings[key]).astype('float32')
     except KeyError:
-        return np.zeros(shape=(embeddings.vector_size), dtype='float16')
+        d = 300 if 'choi' in embedding_type else embeddings.vector_size    
+        return np.zeros(shape=(d), dtype='float16')
 
 
 def get_embedded_data(df, embedding_type, embedding_path, drop_columns):
@@ -112,7 +113,7 @@ def get_embedded_data(df, embedding_type, embedding_path, drop_columns):
         else:
           embeddings = KeyedVectors.load(embedding_path)
 
-        embeddings = np.array([safe_embedding(embeddings, x)
+        embeddings = np.array([safe_embedding(embeddings, x, embedding_type)
                                 for x in df['hcpcs_code'].values])
         df.drop(columns=['hcpcs_code'], inplace=True)
         for col in range(embeddings.shape[1]):

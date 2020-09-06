@@ -1,5 +1,5 @@
 Running job with arguments
-{'runs': '2', 'n_jobs': '4', 'sample_size': '4000000', 'max_depth': '8', 'drop_columns': 'state_code', 'embedding_type': 'cbow150_w10', 'embedding_path': '/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/data/cbow-e150-w10-i200.kv'}
+{'runs': '2', 'n_jobs': '4', 'sample_size': '4000000', 'max_depth': '8', 'drop_columns': 'state_code', 'embedding_type': 'choi300', 'embedding_path': '/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/data/choi-mcemc-e300.pickle'}
 n_estimators: 100
 max_depth: 8
 Starting run 0
@@ -13,39 +13,39 @@ Using columns Index(['gender', 'provider_type', 'hcpcs_code', 'line_srvc_cnt',
        'bene_unique_cnt', 'bene_day_srvc_cnt', 'average_submitted_chrg_amt',
        'average_medicare_payment_amt'],
       dtype='object')
-Using cbow150_w10 embedding
-Embedded data shape: (4000000, 256)
-Encoded data shape: (4000000, 256)
+Using choi300 embedding
+Embedded data shape: (4000000, 406)
+Encoded data shape: (4000000, 406)
 Starting fold 0
-Train shape: (3200000, 256)
-Test shape: (800000, 256)
+Train shape: (3200000, 406)
+Test shape: (800000, 406)
 Minority size: 0.9137187499999999
 Threshold: 0.0091371875
-Training completed in 17047.55409169197
+Training completed in 15648.557710886002
 Starting fold 1
-Train shape: (3200000, 256)
-Test shape: (800000, 256)
+Train shape: (3200000, 406)
+Test shape: (800000, 406)
 Minority size: 0.9137187499999999
 Threshold: 0.0091371875
-Training completed in 19250.453433275223
+Training completed in 15645.836884021759
 Starting fold 2
-Train shape: (3200000, 256)
-Test shape: (800000, 256)
+Train shape: (3200000, 406)
+Test shape: (800000, 406)
 Minority size: 0.9136874999999999
 Threshold: 0.009136875
-Training completed in 18242.01510667801
+Training completed in 15178.24459862709
 Starting fold 3
-Train shape: (3200000, 256)
-Test shape: (800000, 256)
+Train shape: (3200000, 406)
+Test shape: (800000, 406)
 Minority size: 0.9136874999999999
 Threshold: 0.009136875
-Training completed in 18514.855184316635
+Training completed in 16743.19400548935
 Starting fold 4
-Train shape: (3200000, 256)
-Test shape: (800000, 256)
+Train shape: (3200000, 406)
+Test shape: (800000, 406)
 Minority size: 0.9136874999999999
 Threshold: 0.009136875
-Training completed in 17689.5759267807
+Training completed in 18584.536645889282
 Starting run 1
 Loading data from path /home/groups/fau-bigdata-datasets/medicare/non-aggregated/Medicare_PUF_PartB_2012to2017.csv.gz
 Loaded data with shape: (56818165, 12)
@@ -57,37 +57,37 @@ Using columns Index(['gender', 'provider_type', 'hcpcs_code', 'line_srvc_cnt',
        'bene_unique_cnt', 'bene_day_srvc_cnt', 'average_submitted_chrg_amt',
        'average_medicare_payment_amt'],
       dtype='object')
-Using cbow150_w10 embedding
-Embedded data shape: (4000000, 256)
-Encoded data shape: (4000000, 256)
+Using choi300 embedding
+Embedded data shape: (4000000, 406)
+Encoded data shape: (4000000, 406)
 Starting fold 0
-Train shape: (3200000, 256)
-Test shape: (800000, 256)
+Train shape: (3200000, 406)
+Test shape: (800000, 406)
 Minority size: 0.9137187499999999
 Threshold: 0.0091371875
-Training completed in 16997.669823884964
+Training completed in 15266.56908082962
 Starting fold 1
-Train shape: (3200000, 256)
-Test shape: (800000, 256)
+Train shape: (3200000, 406)
+Test shape: (800000, 406)
 Minority size: 0.9137187499999999
 Threshold: 0.0091371875
-Training completed in 17155.428233385086
+Training completed in 15175.59307718277
 Starting fold 2
-Train shape: (3200000, 256)
-Test shape: (800000, 256)
+Train shape: (3200000, 406)
+Test shape: (800000, 406)
 Minority size: 0.9136874999999999
 Threshold: 0.009136875
-Training completed in 22343.474915981293
+Training completed in 15165.058178663254
 Starting fold 3
-Train shape: (3200000, 256)
-Test shape: (800000, 256)
+Train shape: (3200000, 406)
+Test shape: (800000, 406)
 Minority size: 0.9136874999999999
 Threshold: 0.009136875
-Training completed in 21230.558673143387
+Training completed in 15180.186820030212
 Starting fold 4
-Train shape: (3200000, 256)
-Test shape: (800000, 256)
+Train shape: (3200000, 406)
+Test shape: (800000, 406)
 Minority size: 0.9136874999999999
 Threshold: 0.009136875
-Training completed in 16921.69565796852
+Training completed in 15164.275918245316
 Job complete

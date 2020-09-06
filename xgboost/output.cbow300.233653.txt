@@ -1,5 +1,5 @@
 Running job with arguments
-{'runs': '2', 'n_jobs': '4', 'sample_size': '4000000', 'max_depth': '8', 'drop_columns': 'state_code', 'embedding_type': 'choi300', 'embedding_path': '/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/data/choi-mcemc-e300.kv'}
+{'runs': '1', 'n_jobs': '4', 'sample_size': '4000000', 'max_depth': '8', 'drop_columns': 'state_code', 'embedding_type': 'cbow300_w10', 'embedding_path': '/home/jjohn273/git/HCPCS-Embeddings-For-Fraud-Detection/data/cbow-e300-w10-i200.kv'}
 n_estimators: 100
 max_depth: 8
 Starting run 0
@@ -13,4 +13,11 @@ Using columns Index(['gender', 'provider_type', 'hcpcs_code', 'line_srvc_cnt',
        'bene_unique_cnt', 'bene_day_srvc_cnt', 'average_submitted_chrg_amt',
        'average_medicare_payment_amt'],
       dtype='object')
-Using choi300 embedding
+Using cbow300_w10 embedding
+Embedded data shape: (4000000, 406)
+Encoded data shape: (4000000, 406)
+Starting fold 0
+Train shape: (3200000, 406)
+Test shape: (800000, 406)
+Minority size: 0.9137187499999999
+Threshold: 0.0091371875

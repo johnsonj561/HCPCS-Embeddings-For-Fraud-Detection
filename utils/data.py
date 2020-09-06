@@ -101,7 +101,7 @@ def get_embedded_data(df, embedding_type, embedding_path, drop_columns):
     drop_columns = ['npi', 'year', 'exclusion', *drop_columns]
     df = df.drop(columns=drop_columns)
     print(f'Using columns {df.columns}')
-    if 'onehot' in embedding_type:
+    if 'onehot' in embedding_type or 'none' in embedding_type:
         print('Using onehot embedding')
         df = pd.get_dummies(df, sparse=True)
         df = df_to_csr(df)

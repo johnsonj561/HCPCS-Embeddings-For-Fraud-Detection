@@ -92,7 +92,10 @@ def safe_embedding(embeddings, key, embedding_type):
     try:
         return np.array(embeddings[key]).astype('float32')
     except KeyError:
-        d = 300 if 'choi' in embedding_type else embeddings.vector_size    
+        if 'uniform' in embedding_type or 'choi' in embedding_type:
+            d = len(embeddings.values()[0])
+        else:
+            d = embeddings.vector_size
         return np.zeros(shape=(d), dtype='float16')
 
 
@@ -105,9 +108,9 @@ def get_embedded_data(df, embedding_type, embedding_path, drop_columns):
         print('Using onehot embedding')
         df = pd.get_dummies(df, sparse=True)
         df = df_to_csr(df)
-    if 'skipgram' in embedding_type or 'cbow' in embedding_type or 'choi' in embedding_type:
+    if 'skipgram' in embedding_type or 'cbow' in embedding_type or 'choi' in embedding_type or 'uniform' in embedding_type:
         print(f'Using {embedding_type} embedding')
-        if 'choi' in embedding_type:
+        if 'choi' in embedding_type or 'uniform' in embedding_type:
           with open(embedding_path, 'rb') as fin:
             embeddings = pickle.load(fin)
         else:

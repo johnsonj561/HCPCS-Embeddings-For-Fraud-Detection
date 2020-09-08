@@ -1,5 +1,5 @@
 roc_auc,tp,fp,tn,fn,tpr,tnr,geometric_mean,elapsed,minority_size,embedding_type,dropped_columns,max_depth,threshold,l2_reg,l1_reg
-0.872512,25067,953375,2217386,4172,0.857314,0.699323,0.774299,610.843699,0.913719,onehot,state_code,8,0.009137,,roc_auc,tp,fp,tn,fn,tpr,tnr,geometric_mean,elapsed,minority_size,embedding_type,dropped_columns,max_depth,threshold,l2_reg,l1_reg
+0.872512,25067,953375,2217386,4172,0.857314,0.699323,0.774299,610.843699,0.913719,onehot,state_code,8,0.009137,,
 0.874693,25114,949744,2221017,4125,0.858921,0.700468,0.775659,605.735006,0.913719,onehot,state_code,8,0.009137,,
 0.873308,25008,938804,2231957,4231,0.855296,0.703918,0.775924,612.168417,0.913719,onehot,state_code,8,0.009137,,
 0.87358,25184,948110,2222651,4055,0.861315,0.700983,0.777025,621.417171,0.913719,onehot,state_code,8,0.009137,,

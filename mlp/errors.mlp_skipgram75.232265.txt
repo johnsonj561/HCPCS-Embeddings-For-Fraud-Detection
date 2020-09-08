@@ -1,9 +1,0 @@
-2020-08-31 05:27:23.640076: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2800095000 Hz
-2020-08-31 05:27:23.640418: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x564ca2aa1e50 executing computations on platform Host. Devices:
-2020-08-31 05:27:23.640464: I tensorflow/compiler/xla/service/service.cc:175]   StreamExecutor device (0): Host, Default Version
-2020-08-31 05:27:32.619235: I tensorflow/core/profiler/lib/profiler_session.cc:184] Profiler session started.
-2020-08-31 07:28:27.297845: I tensorflow/core/profiler/lib/profiler_session.cc:184] Profiler session started.
-2020-08-31 10:30:25.374860: I tensorflow/core/profiler/lib/profiler_session.cc:184] Profiler session started.
-2020-08-31 13:09:24.048489: I tensorflow/core/profiler/lib/profiler_session.cc:184] Profiler session started.
-WARNING:tensorflow:Method (on_train_batch_end) is slow compared to the batch update (0.222764). Check your callbacks.
-2020-08-31 15:13:01.973899: I tensorflow/core/profiler/lib/profiler_session.cc:184] Profiler session started.

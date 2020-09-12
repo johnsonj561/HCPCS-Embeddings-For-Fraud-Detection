@@ -96,7 +96,7 @@ def safe_embedding(embeddings, key, embedding_type):
             d = len(embeddings.values()[0])
         else:
             d = embeddings.vector_size
-        return np.zeros(shape=(d), dtype='float16')
+        return np.random.uniform(low=0, high=1, size=embedding_size)
 
 
 def get_embedded_data(df, embedding_type, embedding_path, drop_columns):

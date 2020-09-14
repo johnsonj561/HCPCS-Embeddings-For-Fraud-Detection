@@ -93,10 +93,10 @@ def safe_embedding(embeddings, key, embedding_type):
         return np.array(embeddings[key]).astype('float32')
     except KeyError:
         if 'uniform' in embedding_type or 'choi' in embedding_type:
-            d = len(embeddings.values()[0])
+            d = len(list(embeddings.values())[0])
         else:
             d = embeddings.vector_size
-        return np.random.uniform(low=0, high=1, size=embedding_size)
+        return np.random.uniform(low=0, high=1, size=d)
 
 
 def get_embedded_data(df, embedding_type, embedding_path, drop_columns):

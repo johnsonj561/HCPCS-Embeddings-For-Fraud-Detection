@@ -1,2 +1,0 @@
-srun: error: node008: task 0: Killed
-srun: Force Terminated job step 237907.0

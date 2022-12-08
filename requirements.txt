@@ -21,7 +21,7 @@ boto3==1.14.33
 botocore==1.17.33
 cachetools==4.1.1
 catboost==0.23.2
-certifi==2020.6.20
+certifi==2022.12.7
 chardet==3.0.4
 cycler==0.10.0
 docutils==0.15.2
